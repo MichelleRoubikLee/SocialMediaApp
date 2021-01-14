@@ -1,4 +1,4 @@
-const {comment, validateComment} = require('../models/comments.js');
+const {comment, validateComment} = require('../models/comment.js');
 const express = require('express');
 const { required, validate } = require('joi');
 const router = express.Router();
