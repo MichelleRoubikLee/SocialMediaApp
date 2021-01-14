@@ -1,4 +1,4 @@
-const connectDB = reuire('./startup/db');
+const connectDB = require('./startup/db');
 const express = require('express');
 const app = express();
 const products = require('./routes/users');
