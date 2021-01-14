@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-const Email = require('mongoose-type-email');
+// const Email = require('mongoose-type-email'); //commented out as we believe it may be part of mongoose
 
 //user schema goes here
 const userSchema = new mongoose.Schema({
-    userId: {type: Number, required: true},
+    // userId: {type: Number, required: true},
     name: {type: String, required: true, minlength: 5, maxlength: 255 },
     joinDate: {type: Date, default: Date.now()},
     aboutMe: {type: String, maxlength: 500},
@@ -18,7 +18,7 @@ const User = mongoose.model('user',userSchema);
 
 function validateUser(user) {
     const schema = Joi.object({
-        userId: Joi.number().required(),
+        // userId: Joi.number().required(),
         name: Joi.number(),
         joinDate: Joi.number(),
         aboutMe: Joi.string().min(5).max(255).required(),
