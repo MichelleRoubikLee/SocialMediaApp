@@ -25,6 +25,9 @@ router.post('/new', async (req,res) => {
             userId: req.body.userId,
             name: req.body.name,
             joinDate: req.body.joinDate,
+            aboutMe: req.body.aboutMe,
+            friends: [],
+            comments: [],
         });
 
         await user.save();
