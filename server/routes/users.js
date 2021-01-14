@@ -26,6 +26,7 @@ router.post('/new', async (req,res) => {
             name: req.body.name,
             joinDate: req.body.joinDate,
             aboutMe: req.body.aboutMe,
+            email: req.body.email,
             friends: [],
             comments: [],
         });

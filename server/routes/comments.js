@@ -3,9 +3,9 @@ const express = require('express');
 const { required, validate } = require('joi');
 const router = express.Router();
 
-outer.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
-        const postComment = await comment.find({videoId: req.params.id});
+        const postComment = await comment.find({postId: req.params.id});
         console.log(postComment)
         if(!postComment)
         return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
@@ -15,18 +15,18 @@ outer.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    try{
-        const postComment = await comment.find();
-        console.log(postComment)
-        if(!postComment)
-        return res.status(400).send(`The comment with id "${req.params}" does not exist.`);
-        return res.send(postComment);
-    } catch (ex){
-        return res.status(500).send(`Internal Server Error: ${ex}`);
-    }
-}
-);
+// router.get('/', async (req, res) => {
+//     try{
+//         const postComment = await comment.find();
+//         console.log(postComment)
+//         if(!postComment)
+//         return res.status(400).send(`The comment with id "${req.params}" does not exist.`);
+//         return res.send(postComment);
+//     } catch (ex){
+//         return res.status(500).send(`Internal Server Error: ${ex}`);
+//     }
+// }
+// );
 
 router.post('/', async (req, res) => {
     try{
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
             return res.status(400).send(error);
 
         const comments = new comment({
-            videoId: req.body.videoId,
+            postId: req.body.postId,
             text: req.body.text,
         });
         console.log(req.body);
@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
         const comments = await comment.findByIdAndUpdate(
             req.params.id,
             {
-                videoId: req.body.videoId,
+                postId: req.body.postId,
                 text: req.body.text,
             },
             {new: true}
