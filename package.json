@@ -26,6 +26,7 @@
   "dependencies": {
     "config": "^3.3.3",
     "joi": "^17.3.0",
-    "mongoose": "^5.11.11"
+    "mongoose": "^5.11.11",
+    "mongoose-type-email": "^1.1.2"
   }
 }
