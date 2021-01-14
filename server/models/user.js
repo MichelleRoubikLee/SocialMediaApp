@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 5, maxlength: 255 },
     joinDate: {type: Date, default: Date.now()},
     aboutMe: {type: String, maxlength: 500},
-    email: {type: mongoose.SchemaTypes.Email},
+    email: {type: String, required: false},
+    password: {type: String, required: false},
     friends: {type: Array},
     // comments: [commentSchema],
 });
@@ -22,7 +23,8 @@ function validateUser(user) {
         name: Joi.number(),
         joinDate: Joi.number(),
         aboutMe: Joi.string().min(5).max(255).required(),
-        email: Joi.string().email(),
+        email: Joi.string(),
+        password: Joi.string(),
         //friends and comments are validated in separate process
     });
     return schema.validate(user);

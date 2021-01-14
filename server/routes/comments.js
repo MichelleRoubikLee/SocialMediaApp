@@ -1,6 +1,6 @@
 const {comment, validateComment} = require('../models/comment.js');
 const express = require('express');
-const { required, validate } = require('joi');
+const { required } = require('joi');
 const router = express.Router();
 
 router.get('/:id', async (req, res) => {
