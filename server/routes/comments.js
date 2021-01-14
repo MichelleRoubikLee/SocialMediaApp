@@ -3,7 +3,7 @@ const express = require('express');
 const { required, validate } = require('joi');
 const router = express.Router();
 
-outer.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try{
         const postComment = await comment.find({postId: req.params.id});
         console.log(postComment)
@@ -15,18 +15,18 @@ outer.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    try{
-        const postComment = await comment.find();
-        console.log(postComment)
-        if(!postComment)
-        return res.status(400).send(`The comment with id "${req.params}" does not exist.`);
-        return res.send(postComment);
-    } catch (ex){
-        return res.status(500).send(`Internal Server Error: ${ex}`);
-    }
-}
-);
+// router.get('/', async (req, res) => {
+//     try{
+//         const postComment = await comment.find();
+//         console.log(postComment)
+//         if(!postComment)
+//         return res.status(400).send(`The comment with id "${req.params}" does not exist.`);
+//         return res.send(postComment);
+//     } catch (ex){
+//         return res.status(500).send(`Internal Server Error: ${ex}`);
+//     }
+// }
+// );
 
 router.post('/', async (req, res) => {
     try{
