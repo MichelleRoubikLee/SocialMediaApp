@@ -9,12 +9,8 @@ const userSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 5, maxlength: 255 },
     joinDate: {type: Date, default: Date.now()},
     aboutMe: {type: String, maxlength: 500},
-<<<<<<< HEAD
     email: {type: String, required: false},
     password: {type: String, required: false},
-=======
-    email: {type: String},
->>>>>>> 968225d6c7a8b2c02cc68ca44a67afb5ed16f907
     friends: {type: Array},
     // comments: [commentSchema],<i class="fa fa-hourglass-start" aria-hidden="true"></i>
 });
