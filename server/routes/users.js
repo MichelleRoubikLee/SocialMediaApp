@@ -1,8 +1,16 @@
-const { User, validate } = require("../models/user");
+const { User, validateUser } = require("../models/user");
+const bcrypt = require('bcrypt');
+const auth = require('../middleware/auth');
 const express = require("express");
 const router = express.Router();
 
 //endpoints and route handlers go here
+
+//protected routes here
+// router.post('/:userId/shoppingcart/:productId', auth, async (req, res) => {  //may want to change these to comments?
+// router.put('/:userId/shoppingcart/:productId', auth, async (req, res) => {  //starting page 16 tutorial
+// router.delete('/:userId/shoppingcart/:productId', auth, async (req, res) => { 
+
 
 //get all users
 router.get("/", async (req, res) => {
@@ -17,24 +25,30 @@ router.get("/", async (req, res) => {
 //put new user
 router.post('/new', async (req,res) => {
     try {
-        // const{error}=validate(req.body);
-        // if (error)
-        //     return res.status(400).send(error);
+        const{error}=validateUser(req.body);
+        if (error)
+            return res.status(400).send(error.details[0].message);
 
-        const user = new User ({
-            userId: req.body.userId,
+            let user = await User.findOne({ email:req.body.email});
+            if (user) return res.status(400).send('User already registered.');
+        const salt = await bcrypt.genSalt(10);
+        user = new User ({
             name: req.body.name,
-            joinDate: req.body.joinDate,
-            aboutMe: req.body.aboutMe,
+            // joinDate: req.body.joinDate, -- may want to switch this to Date.now() and pass in on registration
             email: req.body.email,
-            friends: [],
-            comments: [],
+            password:await bcrypt.hash(req.body.password, salt),
         });
 
         await user.save();
-        
-        return res.send(user);
-    } catch (ex) {
+
+        const token = user.generateAuthToken();
+
+        return res
+          .header('x-auth-token', token)
+          .header('access-control-expose-headers', 'x-auth-token')
+          .send({_id: user._id, name: user.name, email: user.email});
+
+      } catch (ex) {
         return res.status(500).send(`InternalServerError:${ex}`);
     }
 });

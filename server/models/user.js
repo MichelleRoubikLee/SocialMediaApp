@@ -1,35 +1,34 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 const CORS = require('cors');
+const config = require('config');
+const jwt = require('jsonwebtoken');
 // const Email = require('mongoose-type-email'); //commented out as we believe it may be part of mongoose
 
 //user schema goes here
 const userSchema = new mongoose.Schema({
-    // userId: {type: Number, required: true},
     name: {type: String, required: true, minlength: 5, maxlength: 255 },
     joinDate: {type: Date, default: Date.now()},
     aboutMe: {type: String, maxlength: 500},
-<<<<<<< HEAD
-    email: {type: String, required: false},
-    password: {type: String, required: false},
-=======
-    email: {type: String},
->>>>>>> 968225d6c7a8b2c02cc68ca44a67afb5ed16f907
+    email: {type: String, unique: true, required: true, minlength: 5, maxlength:255},
+    password: {type: String, required: true, maxlength: 1024, minlength: 5},
+    isAdmin: { type: Boolean, default: false },
     friends: {type: Array},
-    // comments: [commentSchema],<i class="fa fa-hourglass-start" aria-hidden="true"></i>
+    // comments: [commentSchema],
 });
-
+userSchema.methods.generateAuthToken = function () {
+    return jwt.sign({_id: this._id, name: this.name, isAdmin: this.isAdmin}, config.get('jwtSecret'));
+};
 const User = mongoose.model('user',userSchema);
 //validation goes here
 
 function validateUser(user) {
     const schema = Joi.object({
-        // userId: Joi.number().required(),
-        name: Joi.number(),
+        name: Joi.string().min(5).max(50).required(),
         joinDate: Joi.number(),
-        aboutMe: Joi.string().min(5).max(255).required(),
-        email: Joi.string(),
-        password: Joi.string(),
+        aboutMe: Joi.string().min(5).max(255),
+        email: Joi.string().min(5).max(255).required().email(),
+        password: Joi.string().min(5).max(1024).required(),
         //friends and comments are validated in separate process
     });
     return schema.validate(user);
@@ -38,4 +37,5 @@ function validateUser(user) {
 //export goes here
 
 exports.User = User;
+exports.validateUser = validateUser;
 exports.userSchema = userSchema;
