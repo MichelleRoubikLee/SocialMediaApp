@@ -10,9 +10,8 @@ const userSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 5, maxlength: 255 },
     joinDate: {type: Date, default: Date.now()},
     aboutMe: {type: String, maxlength: 500},
-    email: {type: String, unique: true, required: true, minlength: 5, maxlength:255},
-    password: {type: String, required: true, maxlength: 1024, minlength: 5},
-    isAdmin: { type: Boolean, default: false },
+    email: {type: String, required: false},
+    password: {type: String, required: false},
     friends: {type: Array},
     // comments: [commentSchema],
 });
