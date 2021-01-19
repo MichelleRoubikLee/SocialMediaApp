@@ -24,7 +24,7 @@ function Register () {
 
     const handleRegister = (event) => {
         event.preventDefault();
-        setRegister();
+
         //axios post to server
     }
 
@@ -37,6 +37,7 @@ function Register () {
                         id = "registerName" 
                         name = 'name'  
                         className = "form-control text-box"
+                        value={register.name}
                         onChange={handleChange}
                     >
 
@@ -47,6 +48,7 @@ function Register () {
                         id = "registerEmail" 
                         name = 'email'  
                         className = "form-control text-box"
+                        value={register.email}
                         onChange={handleChange}
                     >
 
@@ -57,6 +59,7 @@ function Register () {
                         id = "registerPassword" 
                         name = 'password'  
                         className = "form-control text-box"
+                        value={register.password}
                         onChange={handleChange}
                     >
 
