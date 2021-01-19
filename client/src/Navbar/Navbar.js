@@ -1,6 +1,11 @@
 // import React from 'react';
+<<<<<<< HEAD
 // // import Navbar from 'react-bootstrap/Navbar';
 // // import Button from 'react-bootstrap/Button';
+=======
+// import Navbar from 'react-bootstrap/Navbar';
+// import Button from 'react-bootstrap/Button';
+>>>>>>> 4fb2ebc9600084d3909050d895fbf341e32c31c4
 // import './navBar.css'
 
 // function NavBar(props){
