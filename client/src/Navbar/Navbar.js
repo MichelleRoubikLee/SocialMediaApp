@@ -1,8 +1,6 @@
 // import React from 'react';
-// // import Navbar from 'react-bootstrap/Navbar';
-// // import Button from 'react-bootstrap/Button';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
+
+
 // import './navBar.css'
 
 // function NavBar(props){
