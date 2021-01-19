@@ -23,7 +23,6 @@ function Login () {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        setLogin();
         //axios check login values against server values
     }
 
