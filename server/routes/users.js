@@ -27,18 +27,18 @@ router.post('/new', async (req,res) => {
     try {
         const{error}=validateUser(req.body);
         if (error)
-            return res.status(400).send(error.details[0].message);
+            return res.status(500).send(error.details[0].message);
 
             let user = await User.findOne({ email:req.body.email});
             if (user) return res.status(400).send('User already registered.');
         const salt = await bcrypt.genSalt(10);
         user = new User ({
-            name: req.body.name,
+            userName: req.body.userName,
             // joinDate: req.body.joinDate, -- may want to switch this to Date.now() and pass in on registration
             email: req.body.email,
             password:await bcrypt.hash(req.body.password, salt),
         });
-
+console.log(user);
         await user.save();
 
         const token = user.generateAuthToken();
@@ -46,7 +46,7 @@ router.post('/new', async (req,res) => {
         return res
           .header('x-auth-token', token)
           .header('access-control-expose-headers', 'x-auth-token')
-          .send({_id: user._id, name: user.name, email: user.email});
+          .send({_id: user._id, userName: user.userName, email: user.email, password: user.password});
 
       } catch (ex) {
         return res.status(500).send(`InternalServerError:${ex}`);
@@ -55,15 +55,16 @@ router.post('/new', async (req,res) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await models.User.create({
       username,
+      email,
       password: hashedPassword
     });
     res.json(user);
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
 
