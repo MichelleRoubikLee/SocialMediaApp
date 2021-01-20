@@ -1,10 +1,6 @@
 import React, { useState }from 'react';
 import {API_BASE_URL} from '../config/config.js';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
 
 function Register(props) {    
     const [register, setRegister] = useState({

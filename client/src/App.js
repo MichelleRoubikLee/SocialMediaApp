@@ -13,11 +13,11 @@ function App() {
   return (
     <div className="App">
       <Landing/>
-      <Navbar/>
-      <Sidebar/>
-      <Newsfeed/>
-      <Profile/>
-      <MyComments/>
+      {/* <Navbar/> */}
+      {/* <Sidebar/> */}
+      {/* <Newsfeed/> */}
+      {/* <Profile/> */}
+      {/* <MyComments/> */}
     </div>
   );
 }
