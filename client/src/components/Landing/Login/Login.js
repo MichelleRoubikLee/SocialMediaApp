@@ -1,8 +1,7 @@
 import React, { useState }from 'react';
-// import Form from 'react-bootstrap/Form';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
-// import FormControl from 'react-bootstrap/FormControl';
+import axios from 'axios';
+import {API_BASE_URL} from '../../../config/config.js';
+
 
 
 function Login () {
@@ -12,20 +11,30 @@ function Login () {
         password: ""
     })
 
-    const handleChange = (event) => {
 
+    const handleChange = (event) => {
         let n = event.target.name;
-        setLogin({
+        setLogin(login => ({...login,
             [n]: event.target.value,
-        })
+        }))
         console.log(n, event.target.value)
     }
-
+    
     const handleLogin = (event) => {
         event.preventDefault();
-        //axios check login values against server values
+        const newurl = API_BASE_URL+'new';
+        
+        axios({
+            method: 'post',
+            url: newurl,
+            data: {
+                password: login.password,
+                email: login.email
+            }
+        })
+        console.log(login);
+        
     }
-
 
     return (
             <div className = "loginInfo">

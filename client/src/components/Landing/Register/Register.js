@@ -1,10 +1,7 @@
 import React, { useState }from 'react';
-import {API_BASE_URL} from '../config/config.js';
+import {API_BASE_URL} from '../../../config/config.js';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
+
 
 function Register(props) {    
     const [register, setRegister] = useState({
@@ -84,6 +81,7 @@ function Register(props) {
                         id = "registerName" 
                         name = 'userName'  
                         className = "form-control text-box"
+                        value={register.name}
                         onChange={handleChange}
                     >
 
@@ -94,6 +92,7 @@ function Register(props) {
                         id = "registerPassword" 
                         name = 'password'  
                         className = "form-control text-box"
+                        value={register.email}
                         onChange={handleChange}
                     >
 
@@ -104,6 +103,7 @@ function Register(props) {
                         id = "registerEmail" 
                         name = 'email'  
                         className = "form-control text-box"
+                        value={register.password}
                         onChange={handleChange}
                     >
                     </input>
