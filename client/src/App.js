@@ -15,7 +15,7 @@ function App() {
       <Landing/>
       {/* <Navbar/> */}
       {/* <Sidebar/> */}
-      {/* <Newsfeed/> */}
+      <Newsfeed/>
       <Profile/>
       {/* <MyComments/> */}
     </div>

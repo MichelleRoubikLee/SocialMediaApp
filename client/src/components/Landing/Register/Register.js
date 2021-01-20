@@ -80,7 +80,6 @@ function Register(props) {
                         id = "registerName" 
                         name = 'userName'  
                         className = "form-control text-box"
-                        value={register.name}
                         onChange={handleChange}
                     >
 
@@ -91,7 +90,6 @@ function Register(props) {
                         id = "registerPassword" 
                         name = 'password'  
                         className = "form-control text-box"
-                        value={register.email}
                         onChange={handleChange}
                     >
 
@@ -102,7 +100,6 @@ function Register(props) {
                         id = "registerEmail" 
                         name = 'email'  
                         className = "form-control text-box"
-                        value={register.password}
                         onChange={handleChange}
                     >
                     </input>

@@ -38,7 +38,7 @@ function Profile(props) {
     // },[petBoxInfo]);
     
     return (
-        <div>
+        <div className='Profile'>
             <div 
             className = "profile picture" 
             id = "profile"
@@ -48,7 +48,7 @@ function Profile(props) {
             </div>
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
-                <label for="info-box">Info Box
+                <label htmlFor="info-box">Info Box
 
                 </label>
                 <input type = "text" 
