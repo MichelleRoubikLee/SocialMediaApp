@@ -12,20 +12,30 @@ function Login () {
         password: ""
     })
 
-    const handleChange = (event) => {
 
+    const handleChange = (event) => {
         let n = event.target.name;
-        setLogin({
+        setRegister(register => ({...login,
             [n]: event.target.value,
-        })
+        }))
         console.log(n, event.target.value)
     }
-
+    
     const handleLogin = (event) => {
         event.preventDefault();
-        //axios check login values against server values
+        const newurl = API_BASE_URL+'new';
+        
+        axios({
+            method: 'post',
+            url: newurl,
+            data: {
+                password: register.password,
+                email: register.email
+            }
+        })
+        console.log(register);
+        
     }
-
 
     return (
             <div className = "loginInfo">
