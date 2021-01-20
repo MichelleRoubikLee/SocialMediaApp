@@ -1,4 +1,6 @@
 import React, { useState }from 'react';
+import axios from 'axios';
+import {API_BASE_URL} from '../config/config.js';
 // import Form from 'react-bootstrap/Form';
 // import Navbar from 'react-bootstrap/Navbar';
 // import Button from 'react-bootstrap/Button';
@@ -15,7 +17,7 @@ function Login () {
 
     const handleChange = (event) => {
         let n = event.target.name;
-        setRegister(register => ({...login,
+        setLogin(login => ({...login,
             [n]: event.target.value,
         }))
         console.log(n, event.target.value)
@@ -29,11 +31,11 @@ function Login () {
             method: 'post',
             url: newurl,
             data: {
-                password: register.password,
-                email: register.email
+                password: login.password,
+                email: login.email
             }
         })
-        console.log(register);
+        console.log(login);
         
     }
 
