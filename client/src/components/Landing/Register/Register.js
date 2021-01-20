@@ -1,6 +1,8 @@
 import React, { useState }from 'react';
 import {API_BASE_URL} from '../../../config/config.js';
 import axios from 'axios';
+import '../Register/Register.css';
+
 
 
 function Register(props) {    
@@ -72,7 +74,8 @@ function Register(props) {
 //             }
 //         }
     
-    return (            
+    return ( 
+        <div className = "body">           
             <div className = "registerInfo">
                 <form className = "form-register form-floating" onSubmit={handleRegister}>
                     <label htmlFor = "registerName">Name </label>
@@ -109,10 +112,10 @@ function Register(props) {
                     </input>
 
 
-                    <button type="submit" className="button-login-submit">Login</button>
+                    <button type="submit" className="button-register-submit">Register</button>
                 </form>
             </div>
-
+        </div>
     )
 }
 
