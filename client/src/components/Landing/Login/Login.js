@@ -1,10 +1,7 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../config/config.js';
-// import Form from 'react-bootstrap/Form';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button';
-// import FormControl from 'react-bootstrap/FormControl';
+import {API_BASE_URL} from '../../../config/config.js';
+
 
 
 function Login () {
