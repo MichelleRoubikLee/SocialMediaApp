@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import {API_BASE_PETINFO_URL} from '../config/config.js';
+import {API_BASE_PETINFO_URL} from '../../config/config.js';
 
 function Profile(props) {
 
