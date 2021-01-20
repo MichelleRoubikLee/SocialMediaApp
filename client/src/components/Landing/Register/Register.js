@@ -2,7 +2,6 @@ import React, { useState }from 'react';
 import {API_BASE_URL} from '../../../config/config.js';
 import axios from 'axios';
 
-
 function Register(props) {    
     const [register, setRegister] = useState({
         userName: "",

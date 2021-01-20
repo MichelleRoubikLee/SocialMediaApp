@@ -1,16 +1,16 @@
-import React, { useState, useEffect} from 'react';
+// import React, { useState, useEffect} from 'react';
 
-//like and unlike buttons idea
+// //like and unlike buttons idea
 
-function Like({initialCount}) {
-    const [count, setCount] = useState(initialCount);
+// function Like({initialCount}) {
+//     const [count, setCount] = useState(initialCount);
 
     
-    return (
-      <>
-        Count: {count}
-        <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
-        <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
-      </>
-    );
-  }
+//     return (
+//       <>
+//         Count: {count}
+//         <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+//         <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+//       </>
+//     );
+//   }
