@@ -16,7 +16,7 @@ function App() {
       {/* <Navbar/> */}
       {/* <Sidebar/> */}
       {/* <Newsfeed/> */}
-      {/* <Profile/> */}
+      <Profile/>
       {/* <MyComments/> */}
     </div>
   );

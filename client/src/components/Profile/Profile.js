@@ -4,7 +4,7 @@ import {API_BASE_PETINFO_URL} from '../../config/config.js';
 
 function Profile(props) {
 
-    const [petBoxInfo, setInfo] = useState({
+    const [petBoxInfo, setPetBoxInfo] = useState({
         aboutPetText: "",
         name: ""
     });
@@ -12,7 +12,7 @@ function Profile(props) {
     const handleChange = (event) => {
 
         let info = event.target.name;
-        setInfo(petBoxInfo => ({...petBoxInfo,
+        setPetBoxInfo(petBoxInfo => ({...petBoxInfo,
             [info]: event.target.value
         }));
         console.log(info, event.target.value);
@@ -69,4 +69,4 @@ function Profile(props) {
 
 
 
-export default Profile();
+export default Profile;

@@ -7,7 +7,7 @@ function Register(props) {
         userName: "",
         password: "",
         email: "",
-    })
+    });
     
     const handleChange = (event) => {
         let n = event.target.name;
