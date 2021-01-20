@@ -73,47 +73,48 @@ function Register(props) {
 //             }
 //         }
     
-    return ( 
-        <div className = "body">           
-            <div className = "registerInfo">
-                <form className = "form-register form-floating" onSubmit={handleRegister}>
-                    <label htmlFor = "registerName">Name </label>
-                    <input 
-                        type = "text" 
-                        id = "registerName" 
-                        name = 'userName'  
-                        className = "form-control text-box"
-                        onChange={handleChange}
-                    >
+return (            
+    <div className = "registerInfo">
+      <div>
+        <h1 className = "registerTitle" >Register</h1>
+        <p>For your shinny new dog tags!</p>
+      </div>
+        <form className = "form-register form-floating" onSubmit={handleRegister}>
+            <label htmlFor = "registerName">Name </label>
+            <input 
+                type = "text" 
+                id = "registerName" 
+                name = 'userName'  
+                className = "form-control text-box"
+                value={register.name}
+                onChange={handleChange}
+            >
 
-                    </input>
-                    <label htmlFor = "registerPassword">Password</label>
-                    <input 
-                        type = "text" 
-                        id = "registerPassword" 
-                        name = 'password'  
-                        className = "form-control text-box"
-                        onChange={handleChange}
-                    >
+            </input>
+            <label htmlFor = "registerPassword">Password</label>
+            <input 
+                type = "text" 
+                id = "registerPassword" 
+                name = 'password'  
+                className = "form-control text-box"
+                value={register.email}
+                onChange={handleChange}
+            >
 
-                    </input>
-                    <label htmlFor = "registerEmail">Email</label>
-                    <input 
-                        type = "text" 
-                        id = "registerEmail" 
-                        name = 'email'  
-                        className = "form-control text-box"
-                        onChange={handleChange}
-                    >
-                    </input>
-
-
-                    <button type="submit" className="button-Register-submit">Register</button>
-                </form>
-            </div>
-        </div>
-    )
+            </input>
+            <label htmlFor = "registerEmail">Email</label>
+            <input 
+                type = "text" 
+                id = "registerEmail" 
+                name = 'email'  
+                className = "form-control text-box"
+                value={register.password}
+                onChange={handleChange}
+            >
+            </input>
+            <button type="submit" className="btn btn-lg btn-primary btn-block">Register</button>
+        </form>
+    </div>
+)
 }
-
-
 export default Register;

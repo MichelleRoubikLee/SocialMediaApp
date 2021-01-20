@@ -44,7 +44,6 @@ body {
     border-top-right-radius: 0;
   }
   
-  .button-login-submit{
+  .btn-success {
     margin-top: 10px;
-    margin-left: 25%;
   }
