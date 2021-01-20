@@ -15,11 +15,12 @@ function App() {
       <Landing/>
       {/* <Navbar/> */}
       {/* <Sidebar/> */}
-      {/* <Newsfeed/> */}
-      {/* <Profile/> */}
+      <Newsfeed/>
+      <Profile/>
       {/* <MyComments/> */}
     </div>
   );
 }
+
 
 export default App;

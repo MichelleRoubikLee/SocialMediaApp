@@ -4,13 +4,12 @@ import axios from 'axios';
 import '../Register/Register.css';
 
 
-
 function Register(props) {    
     const [register, setRegister] = useState({
         userName: "",
         password: "",
         email: "",
-    })
+    });
     
     const handleChange = (event) => {
         let n = event.target.name;
@@ -84,7 +83,6 @@ function Register(props) {
                         id = "registerName" 
                         name = 'userName'  
                         className = "form-control text-box"
-                        value={register.name}
                         onChange={handleChange}
                     >
 
@@ -95,7 +93,6 @@ function Register(props) {
                         id = "registerPassword" 
                         name = 'password'  
                         className = "form-control text-box"
-                        value={register.email}
                         onChange={handleChange}
                     >
 
@@ -106,13 +103,12 @@ function Register(props) {
                         id = "registerEmail" 
                         name = 'email'  
                         className = "form-control text-box"
-                        value={register.password}
                         onChange={handleChange}
                     >
                     </input>
 
 
-                    <button type="submit" className="button-register-submit">Register</button>
+                    <button type="submit" className="button-Register-submit">Register</button>
                 </form>
             </div>
         </div>
