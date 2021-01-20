@@ -109,7 +109,7 @@ function Register(props) {
                     </input>
 
 
-                    <button type="submit" className="button-login-submit">Login</button>
+                    <button type="submit" className="button-login-submit">Register</button>
                 </form>
             </div>
 
