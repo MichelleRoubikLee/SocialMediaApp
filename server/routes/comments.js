@@ -40,13 +40,13 @@ router.post('/login', async (req, res) => {
         });
         console.log(req.body);
 
-await comment.save();
+        await comment.save();
 
-return res.send(comment);
-} catch(ex){
-    console.log(ex);
- return res.status(500).send(`Internal Server Error: ${ex}`);
-}
+        return res.send(comment);
+    } catch(ex){
+        console.log(ex);
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
 });
 
 router.put('/:id', async (req, res) => {

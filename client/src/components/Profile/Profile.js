@@ -4,7 +4,7 @@ import {API_BASE_PETINFO_URL} from '../../config/config.js';
 
 function Profile(props) {
 
-    const [petBoxInfo, setInfo] = useState({
+    const [petBoxInfo, setPetBoxInfo] = useState({
         aboutPetText: "",
         name: ""
     });
@@ -12,7 +12,7 @@ function Profile(props) {
     const handleChange = (event) => {
 
         let info = event.target.name;
-        setInfo(petBoxInfo => ({...petBoxInfo,
+        setPetBoxInfo(petBoxInfo => ({...petBoxInfo,
             [info]: event.target.value
         }));
         console.log(info, event.target.value);
@@ -38,7 +38,7 @@ function Profile(props) {
     // },[petBoxInfo]);
     
     return (
-        <div>
+        <div className='Profile'>
             <div 
             className = "profile picture" 
             id = "profile"
@@ -48,7 +48,7 @@ function Profile(props) {
             </div>
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
-                <label for="info-box">Info Box
+                <label htmlFor="info-box">Info Box
 
                 </label>
                 <input type = "text" 
