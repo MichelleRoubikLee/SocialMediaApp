@@ -3,6 +3,7 @@ const Joi = require('joi');
 const CORS = require('cors');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+const {commentSchema} = require('./comment');
 // const Email = require('mongoose-type-email'); //commented out as we believe it may be part of mongoose
 
 //user schema goes here
@@ -13,7 +14,7 @@ const userSchema = new mongoose.Schema({
     email: {type: String, required: false},
     password: {type: String, required: false},
     friends: {type: Array},
-    // comments: [commentSchema],
+    comments: [commentSchema]
 });
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign({_id: this._id, name: this.name, isAdmin: this.isAdmin}, config.get('jwtSecret'));

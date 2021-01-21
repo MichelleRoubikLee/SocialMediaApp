@@ -4,20 +4,23 @@ const { join } = require('path');
 const config = require('config');
 
 const commentSchema = new mongoose.Schema({
-    // postId: {type: String, required: true},
     text: {type: String, required: true},
+    likes: {type: Number, default: 0},
+    dislikes: {type: Number, default: 0},
     postDate: {type: Date, default: Date.now()},
 });
 
-const comment = mongoose.model('', commentSchema)
+const Comment = mongoose.model('', commentSchema)
 
 function validateComment(comment){
     const schema = Joi.object({
-        // postId: Joi.string().required(),
+        likes: Joi.number(),
+        dislikes: Joi.number(),
         text: Joi.string().required(),
     });
     return schema.validate(comment);
 }
 
-exports.comment = comment;
+exports.Comment = Comment;
 exports.validateComment = validateComment;
+exports.commentSchema = commentSchema;
