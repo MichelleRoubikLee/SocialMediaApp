@@ -8,37 +8,37 @@ import useFirstRender from "../../firstRenderHook/useFirstRender"
 function NewsFeed (props) {
 
     const [allUsers, setAllUsers] = useState();
-    const [allComments, setAllComments] = useState();
-    const something = [];
 
     const firstRender = useFirstRender();
+    let commentsInfo = [];
 
-    // useEffect(() => {
-    //     const newurl = API_BASE_URL;
-    //     axios({
-    //         method: 'get',
-    //         url: newurl,
-    //     }).then((res) => {
-    //         setAllUsers(res.data)
-    //     })
-    // }, []);
+    useEffect(() => {
+        const newurl = API_BASE_URL;
+        axios({
+            method: 'get',
+            url: newurl,
+        }).then((res) => {
+            setAllUsers(res.data)
+        })
+    }, []);
 
-    // const users = () => {
-    //     if(!firstRender){
-    //         allUsers.map((users, index) => {
-    //             something.push(<CommentBox key={index} user={users} />)
-    //         })
-    //         // (<CommentBox key={index} user={users} />)
-    //         console.log(something[13].props.user.comments);
-    //     }
-    // }
+    const users = () => {
+        if(!firstRender){
+            allUsers.forEach((oneUser) => {
+                if(oneUser.comments.length > 0){
+                    oneUser.comments.map((comment, index) => {
+                        commentsInfo.push({oneUser, comment, index})
+                    })
+                }
+            })
+            console.log(commentsInfo)
+        }
+    }
 
     return (
         <div className = "NewsFeed">
-            <div>
-                {/* {users()} */}
-                
-            </div>
+                {users()}
+                <CommentBox commentsInfo = {commentsInfo} />
         </div>
     )
 }

@@ -13,7 +13,7 @@ function CommentBox (props) {
 
 
     return (
-        <div className = "CommentBox">Hello World</div>
+        <div className = "CommentBox">Comment Box</div>
     )
 }
 
