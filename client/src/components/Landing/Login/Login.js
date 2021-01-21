@@ -1,6 +1,7 @@
 import React, { useState }from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../../config/config.js';
+import '../Login/Login.css';
 
 
 
@@ -38,6 +39,10 @@ function Login () {
 
     return (
             <div className = "loginInfo">
+            <div>
+        <h1 className = "loginTitle" >Login</h1>
+        <p>Let us "fetch" your account!</p>
+      </div>
                 <form className = "form-login form-floating" onSubmit={handleLogin}>
                     <label htmlFor = "loginEmail">Email</label>
                     <input 
@@ -61,7 +66,7 @@ function Login () {
                     >
 
                     </input>
-                    <button type="submit" className="button-login-submit">Login</button>
+                    <button type="submit" className="btn btn-lg btn-success btn-block">Login</button>
                 </form>
             </div>
     )
