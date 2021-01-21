@@ -9,16 +9,16 @@ function NewsFeed (props) {
 
 
 
-    useEffect(() => {
-        const newurl = API_BASE_URL;
-        axios({
-            method: 'get',
-            url: newurl,
-        }).then((res) => {
-            setAllComments(res.data)
-            console.log(allComments)
-        })
-    }, [allComments])
+    // useEffect(() => {
+    //     const newurl = API_BASE_URL;
+    //     axios({
+    //         method: 'get',
+    //         url: newurl,
+    //     }).then((res) => {
+    //         setAllComments(res.data)
+    //         //console.log(allComments)
+    //     })
+    // }, [allComments])
 
     return (
         <div className = "NewsFeed">
