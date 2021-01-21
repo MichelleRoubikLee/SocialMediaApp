@@ -1,16 +1,20 @@
-// import React, { useState, useEffect} from 'react';
+// import { set } from 'mongoose';
+// import React, { useState, useEffect } from 'react';
 
-// //like and unlike buttons idea
+// function Like() {
+//   const [count, setCount] = useState(0);
 
-// function Like({initialCount}) {
-//     const [count, setCount] = useState(initialCount);
+//   useEffect(() => {
+//     function
 
-    
-//     return (
-//       <>
-//         Count: {count}
-//         <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
-//         <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
-//       </>
-//     );
-//   }
+//   });
+
+//   return (
+//     <div>
+//       <p>You liked this!</p>
+//       <button onClick={() => setCount()}>
+//         Like
+//       </button>
+//     </div>
+//   );
+// }

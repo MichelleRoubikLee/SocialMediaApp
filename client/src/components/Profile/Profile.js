@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import {API_BASE_PETINFO_URL} from '../../config/config.js';
+import Counter from './like';
 
 function Profile(props) {
 
@@ -32,6 +33,20 @@ function Profile(props) {
 
         })  
     }
+
+    // const handleLike = (event) => {
+    //     event.preventDefault();
+        
+    
+    // axios({
+    //     method: 'get',
+    //     url: newurl,
+    //     data: {
+    //         like: newPost.like
+    //     }
+
+    // })  
+    // }
 
     // useEffect(function() {
     //     console.log();
