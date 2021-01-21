@@ -48,33 +48,6 @@ router.post('/new', async (req,res) => {
 });
 
 
-//get all posts
-// router.get('/', async (req, res) => {
-//     try{
-//         const postComment = await comment.find();
-//         if(!postComment)
-//         return res.status(400).send(`The comment with id "${req.params}" does not exist.`);
-//         return res.send(postComment);
-//     } catch (ex){
-//         return res.status(500).send(`Internal Server Error: ${ex}`);
-//     }
-// }
-// );
-
-// //get comment by comment id
-// router.get('/:commentId', async (req, res) => {
-//     try{
-//         const postComment = await comment.find({commentId: req.params._id});
-//         console.log(postComment)
-//         if(!postComment)
-//         return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
-//         return res.send(postComment);
-//     } catch (ex){
-//         return res.status(500).send(`Internal Server Error: ${ex}`);
-//     }
-// });
-
-
 
 //add a comment
 router.put('/:userId/comment', async (req, res) => {
@@ -101,24 +74,44 @@ router.put('/:userId/comment', async (req, res) => {
 });
 
 // add like to comment
-// router.put('/:userId/:commentId/like', async (req, res) => {
-//     try{
+router.put('/:userId/:commentId/like', async (req, res) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.userId);
+        user.comments.filter(function(element){
+            if(element._id == req.params.commentId){
+                element.likes ++;
+            }
+        })
+        console.log(user);
 
-//         const comment = await Comment.findByIdAndUpdate (
-//             req.params.commentId,
-//             {$inc: {likes: 1}},
-//             {new: true}
-//         );
+        await user.save();
+        return res.send(user);
 
-//         await comment.save();
-//         return res.send(comment);
+    } catch(ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
 
-//     } catch(ex) {
-//         return res.status(500).send(`Internal Server Error: ${ex}`);
-//     }
-// });
+// add dislike to comment
+router.put('/:userId/:commentId/dislike', async (req, res) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.userId);
+        user.comments.filter(function(element){
+            if(element._id == req.params.commentId){
+                element.dislikes ++;
+            }
+        })
+        console.log(user);
 
-//delete a comment
+        await user.save();
+        return res.send(user);
+
+    } catch(ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
+
+// delete a comment
 // router.delete('/:id', async (req, res) => {
 //     try{
 //         const comments = await comment.findByIdAndRemove(req.params.id);
