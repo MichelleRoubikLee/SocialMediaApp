@@ -23,9 +23,9 @@ function NewsFeed (props) {
     return (
         <div className = "NewsFeed">
             <div>
-                {allComments.map((comment, index) => (
+                {/* {allComments.map((comment, index) => (
                     <CommentBox key={index} comment={comment} />
-                ))}
+                ))} */}
             </div>
         </div>
     )
