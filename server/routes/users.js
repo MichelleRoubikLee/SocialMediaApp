@@ -88,13 +88,11 @@ router.put('/:userId/comment', async (req, res) => {
 
         const user = await User.findByIdAndUpdate(
             req.params.userId,
-            {
-                comments: comment
-            },
+            {$push: {comments: comment}},
             {new: true}
         );
 
-        if (!comment) return res.status(400).send(`The user with id "${req.params.id}" does not exist.`);
+        if (!comment) return res.status(400).send(`The user with id "${req.params.userid}" does not exist.`);
         await user.save();
         return res.send(user);
     } catch(ex) {
@@ -102,17 +100,19 @@ router.put('/:userId/comment', async (req, res) => {
     }
 });
 
-//add like to comment
-// router.put('/:commentId', async (req, res) => {
+// add like to comment
+// router.put('/:userId/:commentId/like', async (req, res) => {
 //     try{
 
-//         const comment = await Comment.findByIdAndUpdate ({
-//             text: req.body.text
-//         });
+//         const comment = await Comment.findByIdAndUpdate (
+//             req.params.commentId,
+//             {$inc: {likes: 1}},
+//             {new: true}
+//         );
 
-//         if (!comment) return res.status(400).send(`The user with id "${req.params.id}" does not exist.`);
-//         await user.save();
-//         return res.send(user);
+//         await comment.save();
+//         return res.send(comment);
+
 //     } catch(ex) {
 //         return res.status(500).send(`Internal Server Error: ${ex}`);
 //     }
