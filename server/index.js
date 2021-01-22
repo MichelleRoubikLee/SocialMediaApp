@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose')
 const users = require('./routes/users');
 const cors = require('cors');
+var multer = require('multer');
 const auth = require('./routes/auth');
 const petinfo = require('./routes/petinfos');
 
