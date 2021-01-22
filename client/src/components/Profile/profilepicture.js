@@ -1,11 +1,25 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
+import axios from 'axios'
+
+
+  //   axios({
+  //     method: 'post',
+  //     url: newurl,
+  //     data: {
+  //         aboutPetText: petBoxInfo.aboutPetText,
+  //         name: petBoxInfo.name
+  //     }
+
+  // })  
+
 
 function ProfilePicture() {
     const UploadedImage = useRef(null);
     const ImageUploader = useRef(null);
 
     const handleImageUpload = e => {
+      //possibly putting axios request here
     const [file] = e.target.files;
     if (file) {
       const reader = new FileReader();
@@ -17,7 +31,7 @@ function ProfilePicture() {
       reader.readAsDataURL(file);
     }
   };
-
+  
 
   return (
     <div
@@ -53,5 +67,6 @@ function ProfilePicture() {
     </div>
   );
 }
+
 
 export default ProfilePicture;
