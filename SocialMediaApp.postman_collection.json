@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "fdf01c2d-db12-4908-8c2b-2af808b00497",
+		"name": "SocialMediaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post comment by user update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/users/60086ed947830f0b851cfdaf/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"60086ed947830f0b851cfdaf",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like a comment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/users/60086ed947830f0b851cfdaf/6008d352619d3f1bc6007c36/like",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"60086ed947830f0b851cfdaf",
+						"6008d352619d3f1bc6007c36",
+						"like"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
