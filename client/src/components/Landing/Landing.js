@@ -10,7 +10,7 @@ function Landing () {
     return (
                 
         <div className = "Landing">
-            <img class="logo" src={logo} alt="logo" width="100" height="100"></img>
+            <img className="logo" src={logo} alt="logo" width="100" height="100"></img>
              <Login />
              <Register />
 

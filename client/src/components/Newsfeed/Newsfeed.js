@@ -1,32 +1,44 @@
-import React, { useEffect, useState }from 'react';
+import React, { useRef, useEffect, useState }from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config/config.js';
 import CommentBox from "./CommentBox/commentBox";
+import useFirstRender from "../../firstRenderHook/useFirstRender"
+
 
 function NewsFeed (props) {
 
-    const [allComments, setAllComments] = useState()
+    const [allUsers, setAllUsers] = useState();
 
+    const firstRender = useFirstRender();
+    let commentsInfo = [];
 
+    useEffect(() => {
+        const newurl = API_BASE_URL;
+        axios({
+            method: 'get',
+            url: newurl,
+        }).then((res) => {
+            setAllUsers(res.data)
+        })
+    }, []);
 
-    // useEffect(() => {
-    //     const newurl = API_BASE_URL;
-    //     axios({
-    //         method: 'get',
-    //         url: newurl,
-    //     }).then((res) => {
-    //         setAllComments(res.data)
-    //         //console.log(allComments)
-    //     })
-    // }, [allComments])
+    const users = () => {
+        if(!firstRender){
+            allUsers.forEach((oneUser) => {
+                if(oneUser.comments.length > 0){
+                    oneUser.comments.map((comment, index) => {
+                        commentsInfo.push({oneUser, comment, index})
+                    })
+                }
+            })
+            console.log(commentsInfo)
+        }
+    }
 
     return (
         <div className = "NewsFeed">
-            <div>
-                {/* {allComments.map((comment, index) => (
-                    <CommentBox key={index} comment={comment} />
-                ))} */}
-            </div>
+                {users()}
+                <CommentBox commentsInfo = {commentsInfo} />
         </div>
     )
 }
