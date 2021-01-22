@@ -12,6 +12,7 @@ function UserComments (props) {
         for(let i=0; i < props.user.comments.length; i++){
             commentInfo = {
                 name: props.user.userName,
+                //at photo here
                 userId: props.user._id,
                 commentId: props.user.comments[i]._id,
                 text: props.user.comments[i].text,

@@ -20,7 +20,7 @@ function NewsFeed (props) {
         }).then((res) => {
             setAllUsers(res.data)
         })
-    }, []);
+    }, [allUsers]);
 
     function users(){
         if(!firstRender){
