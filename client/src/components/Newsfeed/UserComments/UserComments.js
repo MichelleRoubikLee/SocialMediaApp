@@ -12,8 +12,8 @@ function UserComments (props) {
         for(let i=0; i < props.user.comments.length; i++){
             commentInfo = {
                 name: props.user.userName,
-                id: props.user._id,
-                commentid: props.user.comments[i]._id,
+                userId: props.user._id,
+                commentId: props.user.comments[i]._id,
                 text: props.user.comments[i].text,
                 likes: props.user.comments[i].likes,
                 dislikes: props.user.comments[i].dislikes

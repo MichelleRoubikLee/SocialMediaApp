@@ -5,19 +5,29 @@ import './commentBox.css';
 
 function CommentBox (props) {
     // name: props.user.userName,
-    // id: props.user._id,
-    // commentid: props.user.comments[i]._id,
+    // userId: props.user._id,
+    // commentId: props.user.comments[i]._id,
     // text: props.user.comments[i].text,
     // likes: props.user.comments[i].likes,
     // dislikes: props.user.comments[i].dislikes
+
+    const handleLike = (event) => {
+        event.preventDefault();
+        const newUrl = API_BASE_URL + props.commentInfo.userId + "/" + props.commentInfo.commentId + '/like';
+        
+        axios({
+          method: 'put',
+          url: newUrl
+        })
+    }
         
 
     return (
         <div className = "CommentBox">
             <p>Name:{props.commentInfo.name}</p>
             <p>text:{props.commentInfo.text}</p>
-            <button>likes:{props.commentInfo.likes}</button>
-            <button>dislikes:{props.commentInfo.dislikes}</button>
+            <button onClick={handleLike}>likes:{props.commentInfo.likes}</button>
+            {/* <button onClick={handleDislike}>dislikes:{props.commentInfo.dislikes}</button> */}
         </div>
     )
 }
