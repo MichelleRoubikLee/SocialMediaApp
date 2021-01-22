@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState }from 'react';
+import React, { useEffect, useState }from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config/config.js';
 import CommentBox from "./CommentBox/commentBox";
@@ -10,7 +10,7 @@ function NewsFeed (props) {
     const [allUsers, setAllUsers] = useState();
 
     const firstRender = useFirstRender();
-    let commentsInfo = [];
+    const nf = []; 
 
     useEffect(() => {
         const newurl = API_BASE_URL;
@@ -22,23 +22,26 @@ function NewsFeed (props) {
         })
     }, []);
 
-    const users = () => {
+    function users(){
         if(!firstRender){
             allUsers.forEach((oneUser) => {
                 if(oneUser.comments.length > 0){
-                    oneUser.comments.map((comment, index) => {
-                        commentsInfo.push({oneUser, comment, index})
+                    oneUser.comments.map((comment) => {
+                        nf.push(comment);
+                        //console.log(comment)
                     })
                 }
             })
-            console.log(commentsInfo)
         }
     }
 
+
     return (
         <div className = "NewsFeed">
-                {users()}
-                <CommentBox commentsInfo = {commentsInfo} />
+            {users()}
+            {nf.map((comment, index) => (
+                <CommentBox key={index} comment={comment}/>
+            ))}
         </div>
     )
 }
