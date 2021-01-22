@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     email: {type: String, required: false},
     password: {type: String, required: false},
     friends: {type: Array},
-    comments: [commentSchema]
+    comments: [commentSchema],
 });
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign({_id: this._id, name: this.name, isAdmin: this.isAdmin}, config.get('jwtSecret'));

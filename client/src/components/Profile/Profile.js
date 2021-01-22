@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {API_BASE_PETINFO_URL} from '../../config/config.js';
 import Counter from './like';
+import profilePicture from './ProfilePicture';
 
 function Profile(props) {
 
@@ -59,8 +60,8 @@ function Profile(props) {
             id = "profile"
             name = "pictureProfile"
             type = "picture">
-
             </div>
+            <profilePicture/>
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
                 <label htmlFor="info-box">Info Box
