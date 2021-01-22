@@ -1,7 +1,7 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../config/config.js';
-import CommentBox from "./CommentBox/commentBox";
+import UserComments from "./UserComments/UserComments";
 import useFirstRender from "../../firstRenderHook/useFirstRender"
 
 
@@ -26,22 +26,20 @@ function NewsFeed (props) {
         if(!firstRender){
             allUsers.forEach((oneUser) => {
                 if(oneUser.comments.length > 0){
-                    oneUser.comments.map((comment) => {
-                        nf.push(comment);
-                        //console.log(comment)
-                    })
+                    nf.push(oneUser);
                 }
             })
         }
     }
 
-
     return (
         <div className = "NewsFeed">
             {users()}
-            {nf.map((comment, index) => (
-                <CommentBox key={index} comment={comment}/>
+            {/* <UserComments users = {nf}/> */}
+            {nf.map((user, index) => (
+                <UserComments key={index} user={user}/>
             ))}
+            {console.log(nf)}
         </div>
     )
 }
