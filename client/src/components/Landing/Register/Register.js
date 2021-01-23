@@ -91,26 +91,26 @@ return (
             >
 
             </input>
-            <label htmlFor = "registerPassword">Password</label>
-            <input 
-                type = "text" 
-                id = "registerPassword" 
-                name = 'password'  
-                className = "form-control text-box"
-                value={register.email}
-                onChange={handleChange}
-            >
-
-            </input>
             <label htmlFor = "registerEmail">Email</label>
             <input 
                 type = "text" 
                 id = "registerEmail" 
                 name = 'email'  
                 className = "form-control text-box"
+                value={register.email}
+                onChange={handleChange}
+            >
+            </input>
+            <label htmlFor = "registerPassword">Password</label>
+            <input 
+                type = "text" 
+                id = "registerPassword" 
+                name = 'password'  
+                className = "form-control text-box"
                 value={register.password}
                 onChange={handleChange}
             >
+
             </input>
             <button type="submit" className="btn btn-lg btn-primary btn-block">Register</button>
         </form>
