@@ -16,7 +16,7 @@ function Register(props) {
         setRegister(register => ({...register,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
+        //console.log(n, event.target.value)
     }
     
     const handleRegister = (event) => {
@@ -32,7 +32,7 @@ function Register(props) {
                 email: register.email
             }
         })
-        console.log(register);
+        //console.log(register);
         
     }
         // axios.post(API_BASE_URL+'/signup', payload)

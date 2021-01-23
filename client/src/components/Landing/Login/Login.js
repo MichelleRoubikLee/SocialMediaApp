@@ -18,7 +18,7 @@ function Login () {
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
+        //console.log(n, event.target.value)
     }
     
     const handleLogin = (event) => {
@@ -34,7 +34,7 @@ function Login () {
             }
         })
         .then((response) => {
-            console.log(response);
+            //console.log(response);
         }, (error) => {
         console.log(error)}
         )

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useRef } from 'react';
 import {API_BASE_PETINFO_URL} from '../../config/config.js';
 import Counter from './like';
-//import profilePicture from './ProfilePicture';
+import ProfilePicture from './profilepicture';
 
 function Profile(props) {
 
@@ -17,7 +17,7 @@ function Profile(props) {
         setPetBoxInfo(petBoxInfo => ({...petBoxInfo,
             [info]: event.target.value
         }));
-        console.log(info, event.target.value);
+        //console.log(info, event.target.value);
     }
 
     const handleInfo = (event) => {
@@ -61,7 +61,7 @@ function Profile(props) {
             name = "pictureProfile"
             type = "picture">
             </div>
-            <profilePicture/>
+            <ProfilePicture/>
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
                 <label htmlFor="info-box">Info Box
