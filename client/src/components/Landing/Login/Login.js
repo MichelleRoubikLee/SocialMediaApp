@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../../config/config.js';
+import {API_LOGIN_URL} from '../../../config/config.js';
 import '../Login/Login.css';
 
 
@@ -23,7 +23,7 @@ function Login () {
     
     const handleLogin = (event) => {
         event.preventDefault();
-        const newurl = API_BASE_URL+'new';
+        const newurl = API_LOGIN_URL+'login';
         
         axios({
             method: 'post',
@@ -33,9 +33,12 @@ function Login () {
                 email: login.email
             }
         })
-        console.log(login);
-        
-    }
+        .then((response) => {
+            console.log(response);
+        }, (error) => {
+        console.log(error)}
+        )
+    };
 
     return (
             <div className = "loginInfo">
