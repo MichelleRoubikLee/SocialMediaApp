@@ -6,39 +6,35 @@ import {API_BASE_URL} from '../../../config/config.js';
 
 function AddComment (props) {
     const [comment, setComment] = useState({
-        userId: "",
+        // userId: props.currentUser.id,
         text: ""
     });
     
-    // const handleChange = (event) => {
-    //     let n = event.target.name;
-    //     setRegister(comment => ({...comment,
-    //         [n]: event.target.value,
-    //     }))
-    //     console.log(n, event.target.value)
-    // }
+    const handleChange = (event) => {
+        let n = event.target.name;
+        setComment(comment => ({...comment,
+            [n]: event.target.value,
+        }))
+        console.log(n, event.target.value)
+    }
     
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const newurl = API_BASE_URL + userId + "/comment" ;
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const newurl = API_BASE_URL + comment.userId + "/comment" ;
         
-    //     axios({
-    //         method: 'put',
-    //         url: newurl,
-    //         data: {
-    //             userName: register.userName,
-    //             password: register.password,
-    //             email: register.email
-    //         }
-    //     })
-    //     console.log(register);
-        
-    // }
+        axios({
+            method: 'put',
+            url: newurl,
+            data: {
+                text: comment.text
+            }
+        })
+    }
     
 
     return (
         <div className = "AddComment">
-            {/* <form onSubmit={handleSubmit} className="form-floating">
+            <form onSubmit={handleSubmit} className="form-floating">
                     <label htmlFor="textBox">Comments</label>
                     <input 
                         name="commentInput" 
@@ -50,7 +46,7 @@ function AddComment (props) {
                     >
                     </input>
                     <button type="submit" className="btn-sm">Add</button>
-                </form> */}
+                </form>
         </div>
     )
 }
