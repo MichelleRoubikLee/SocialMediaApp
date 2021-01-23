@@ -37,11 +37,12 @@ router.post('/new', async (req,res) => {
         });
         console.log(user);
         await user.save();
-        const token = user.generateAuthToken();
+const token = user.generateAuthToken();
+        // const token = user.generateAuthToken();
         return res
             .header('x-auth-token', token)
             .header('access-control-expose-headers', 'x-auth-token')
-            .send({_id: user._id, userName: user.userName, email: user.email, password: user.password});
+            .send({_id: user._id, userName: user.userName, email: user.email});
       } catch (ex) {
         return res.status(500).send(`InternalServerError:${ex}`);
     }
@@ -50,7 +51,7 @@ router.post('/new', async (req,res) => {
 
 
 //add a comment
-router.put('/:userId/comment', async (req, res) => {
+router.put('/:userId/comment', auth, async (req, res) => {
     try{
         const{ error } = validateComment(req.body);
         if(error) return res.status(400).send(error);
@@ -74,7 +75,7 @@ router.put('/:userId/comment', async (req, res) => {
 });
 
 // add like to comment
-router.put('/:userId/:commentId/like', async (req, res) => {
+router.put('/:userId/:commentId/like', auth, async (req, res) => {
     try{
         const user = await User.findByIdAndUpdate(req.params.userId);
         user.comments.filter(function(element){
@@ -93,7 +94,7 @@ router.put('/:userId/:commentId/like', async (req, res) => {
 });
 
 // add dislike to comment
-router.put('/:userId/:commentId/dislike', async (req, res) => {
+router.put('/:userId/:commentId/dislike', auth, async (req, res) => {
     try{
         const user = await User.findByIdAndUpdate(req.params.userId);
         user.comments.filter(function(element){
