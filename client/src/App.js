@@ -12,15 +12,14 @@ import './App.css';
 
 function App() {
     const [currentUser, setCurrentUser] = useState();
-    
-
+    const [jwt, setJwt] = useState();
 
     return (
         <div className="App">
-        <Landing/>
+        <Landing setCurrentUser = {setCurrentUser} setJwt = {setJwt}/>
         {/* <Navbar/> */}
         {/* <Sidebar/> */}
-        <Newsfeed/>
+        <Newsfeed currentUser = {currentUser}/>
         {/* <Profile/> */}
         {/* <MyComments/> */}
         </div>

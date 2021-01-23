@@ -1,24 +1,38 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_LOGIN_URL} from '../../../config/config.js';
+import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
 import '../Login/Login.css';
 
 
 
-function Login () {
+function Login (props) {
 
     const [login, setLogin] = useState({
         email: "",
         password: ""
     })
 
+    function getCurrentUser(){
+        const newurl = API_BASE_URL;
+        axios({
+            method: 'get',
+            url: newurl,
+        }).then((res) => {
+            res.data.forEach(user => {
+
+                if(login.email === user.email){
+                    props.setCurrentUser(user._id)                             
+                }
+            });
+            //console.log(props.currentUser)
+        })
+    }
 
     const handleChange = (event) => {
         let n = event.target.name;
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
-        //console.log(n, event.target.value)
     }
     
     const handleLogin = (event) => {
@@ -33,8 +47,10 @@ function Login () {
                 email: login.email
             }
         })
-        .then((response) => {
-            //console.log(response);
+        .then((res) => {
+            props.setJwt(res.data)
+            console.log(res.data);
+            getCurrentUser();
         }, (error) => {
         console.log(error)}
         )
@@ -43,9 +59,9 @@ function Login () {
     return (
             <div className = "loginInfo">
             <div>
-        <h1 className = "loginTitle" >Login</h1>
-        <p>Let us "fetch" your account!</p>
-      </div>
+                <h1 className = "loginTitle" >Login</h1>
+                <p>Let us "fetch" your account!</p>
+            </div>
                 <form className = "form-login form-floating" onSubmit={handleLogin}>
                     <label htmlFor = "loginEmail">Email</label>
                     <input 

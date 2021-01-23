@@ -11,6 +11,18 @@ function Register(props) {
         email: "",
     });
     
+    function getCurrentUser(){
+        const newurl = API_BASE_URL;
+        axios({
+            method: 'get',
+            url: newurl,
+        }).then((res) => {
+            if(res.email === register.email){
+                props.setCurrentUser(res._id)            
+            }
+        })
+    }
+
     const handleChange = (event) => {
         let n = event.target.name;
         setRegister(register => ({...register,
@@ -31,6 +43,8 @@ function Register(props) {
                 password: register.password,
                 email: register.email
             }
+        }).then(() => {
+            getCurrentUser();
         })
         //console.log(register);
         
