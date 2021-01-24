@@ -1,32 +1,16 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
+import {API_LOGIN_URL} from '../../../config/config.js';
 import '../Login/Login.css';
-import { useHistory, Redirect } from 'react-router-dom';
-//import { Router } from 'express';
+import { Router } from 'express';
+import { Route } from 'react-router-dom';
 
 
 
-function Login (props) {
-const history = useHistory();
-    const [login, setLogin] = useState({ email: '', password: '', error: '' })
-    
-    function getCurrentUser(){
-        // const newurl = API_BASE_URL;
-        // axios({
-        //     method: 'get',
-        //     url: newurl,
-        // }).then((res) => {
-        //     res.data.forEach(user => {
+function Login (event) { //from tutorial: https://github.com/vnovick/graphql-jwt-tutorial/blob/master/nextjsapp/pages/login.js this is our base_URL
 
-        //         if(login.email === user.email){
-        //             props.setCurrentUser(user._id)                             
-        //         }
-        //     });
-        //     //console.log(props.currentUser)
-        // })
-        console.log('getCurrentUser() Called')
-    }
+    const [login, setLogin] = useState({ email: '', password: '', error: '' });
+
 
     const handleChange = (event) => {
         let n = event.target.name;
@@ -35,8 +19,8 @@ const history = useHistory();
         }))
         console.log(n, event.target.value)
     }
-    
-    async function handleLogin (event) {
+
+    const handleLogin = (event) => {
         event.preventDefault();
         const newurl = API_LOGIN_URL+'login';
         axios({
@@ -51,44 +35,44 @@ const history = useHistory();
             console.log(response);
             if (response.status === 200) {
             sessionStorage.setItem('sessionId', response.data);
-          history.push("/");
-        // alert you are logged in
-        
-        return <Redirect to="/Newsfeed" />;
-            } else{
-            console.log('Login failed.')
-            return <Redirect to='/' />;
-            }
+          //put in redirect here
+           Route.push('/Newsfeed');
+            } else
+                console.log('Login failed.')
 
                 //error message that username and password is bad or whatever else comes back from the server
         }, (error) => {
         console.log(error);
         })
-    };
+    };   
+
+     
+       
+
 
     return (
             <div className = "loginInfo">
             <div>
-                <h1 className = "loginTitle" >Login</h1>
-                <p>Let us "fetch" your account!</p>
-            </div>
-                <form className = "form-login form-floating" onSubmit={handleLogin}>
+        <h1 className = "loginTitle" >Login</h1>
+        <p>Let us "fetch" your account!</p>
+      </div>
+                <form className = "form-login form-floating" onSubmit={Login}> //changed from handleLogin
                     <label htmlFor = "loginEmail">Email</label>
-                    <input 
-                        type = "text" 
-                        id = "loginEmail" 
-                        name = 'email'  
+                    <input
+                        type = "text"
+                        id = "loginEmail"
+                        name = 'email'
                         className = "form-control text-box"
                         value={login.email}
                         onChange={handleChange}
                     >
-                    
+
                     </input>
                     <label htmlFor = "loginPassword">Password</label>
-                    <input 
-                        type = "text" 
-                        id = "loginPassword" 
-                        name = 'password'  
+                    <input
+                        type = "text"
+                        id = "loginPassword"
+                        name = 'password'
                         className = "form-control text-box"
                         value={login.password}
                         onChange={handleChange}

@@ -5,10 +5,10 @@ import '../Login/Login.css';
 import { useHistory, Redirect } from 'react-router-dom';
 //import { Router } from 'express';
 
-
+const history = useHistory();
 
 function Login (props) {
-const history = useHistory();
+
     const [login, setLogin] = useState({ email: '', password: '', error: '' })
     
     function getCurrentUser(){
@@ -36,7 +36,7 @@ const history = useHistory();
         console.log(n, event.target.value)
     }
     
-    async function handleLogin (event) {
+    const handleLogin = (event) => {
         event.preventDefault();
         const newurl = API_LOGIN_URL+'login';
         axios({
@@ -51,8 +51,8 @@ const history = useHistory();
             console.log(response);
             if (response.status === 200) {
             sessionStorage.setItem('sessionId', response.data);
-          history.push("/");
-        // alert you are logged in
+          //put in redirect here
+        //    history.push('/Newsfeed');
         
         return <Redirect to="/Newsfeed" />;
             } else{

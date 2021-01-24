@@ -35,15 +35,16 @@ function NewsFeed (props) {
 
     return (
         <div className = "NewsFeed">
-            <AddComment/>
+            <AddComment currentUser = {props.currentUser}/>
             {users()}
             {nf.map((user, index) => (
                 <UserComments key={index} user={user}/>
             ))}
-            {console.log(nf)}
+            {/* {console.log(nf)} */}
         </div>
     )
 }
 
 
 export default NewsFeed; 
+

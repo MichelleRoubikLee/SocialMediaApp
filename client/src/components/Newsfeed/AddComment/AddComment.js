@@ -24,6 +24,7 @@ function AddComment (props) {
         
         axios({
             method: 'put',
+            headers: {'x-auth-token': sessionStorage.getItem('sessionId')}, //this is what validates access based on session ID
             url: newurl,
             data: {
                 text: comment.text
