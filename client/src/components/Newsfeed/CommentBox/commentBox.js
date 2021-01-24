@@ -8,9 +8,10 @@ function CommentBox (props) {
     const handleLike = (event) => {
         event.preventDefault();
         const newUrl = API_BASE_URL + props.commentInfo.userId + "/" + props.commentInfo.commentId + '/like';
-        
+        let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
+          headers: {'x-auth-token': headers},
           url: newUrl
         })
     }
@@ -18,9 +19,10 @@ function CommentBox (props) {
     const handleDislike = (event) => {
         event.preventDefault();
         const newUrl = API_BASE_URL + props.commentInfo.userId + "/" + props.commentInfo.commentId + '/dislike';
-        
+        let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
+          headers: {'x-auth-token': headers},
           url: newUrl
         })
     }

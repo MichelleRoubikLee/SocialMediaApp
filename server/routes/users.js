@@ -35,7 +35,7 @@ router.post('/new', async (req,res) => {
             email: req.body.email,
             password:await bcrypt.hash(req.body.password, salt),
         });
-        console.log(user);
+        
         await user.save();
         const token = user.generateAuthToken();
         // const token = user.generateAuthToken();
@@ -53,24 +53,33 @@ router.post('/new', async (req,res) => {
 //add a comment
 router.put('/:userId/comment', auth, async (req, res) => {
     try{
-        const{ error } = validateComment(req.body);
+        const { error } = validateComment(req.body);
+        
         if(error) return res.status(400).send("ValidationError " + error);
-
+        
         const comment = new Comment ({
             text: req.body.text
         });
-
+        
         const user = await User.findByIdAndUpdate(
             req.params.userId,
             {$push: {comments: comment}},
             {new: true}
         );
-
+        
         if (!comment) return res.status(400).send(`The user with id "${req.params.userid}" does not exist.`);
+        
+        console.log("hit1");
+
         await user.save();
+        
+        console.log("hit2");
+
         return res.send(user);
-    } catch(ex) {
-        return res.status(500).send(`Internal Server Error: ${ex}`);
+
+    } catch(err) {
+        
+        return res.status(500).send(`Internal Server Error: ${err}`);
     }
 });
 

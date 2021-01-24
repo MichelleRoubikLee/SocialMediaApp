@@ -50,12 +50,12 @@ function Login (props) {
             }
         })
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             if (response.status === 200) {
                 sessionStorage.setItem('sessionId', response.data);
             }
             getCurrentUser();
-            console.log(sessionStorage)
+            //console.log(sessionStorage)
         });
     }
         //   history.push("/");
