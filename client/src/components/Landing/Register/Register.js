@@ -46,8 +46,7 @@ function Register(props) {
         }).then(() => {
             getCurrentUser();
         })
-<<<<<<< HEAD
-        console.log(register);
+        //console.log(register);
         // .then((response) => {
         //     redirectToHome();
         // }, (error) => {
@@ -58,10 +57,9 @@ function Register(props) {
     //     function redirectToHome() {
     // props.updateTitle('Home');
     // props.history.push('/home');
-=======
         //console.log(register);
         
-    }
+    
         // axios.post(API_BASE_URL+'/signup', payload)
         //         .then(function (response) {
         //             if(response.status === 200){
@@ -86,7 +84,6 @@ function Register(props) {
 //         function redirectToHome() {
 //     props.updateTitle('Home');
 //     props.history.push('/home');
->>>>>>> acf590c26d604dd135e12f46013c2d27aae388f8
 // }
         // const redirectToLogin = () => {
         //     props.updateTitle('Login')

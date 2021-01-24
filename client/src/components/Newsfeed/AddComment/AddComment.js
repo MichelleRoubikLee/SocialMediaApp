@@ -20,7 +20,9 @@ function AddComment (props) {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newurl = API_BASE_URL + comment.userId + "/comment" ;
+        const newurl = API_BASE_URL + props.currentUser + "/comment" ;
+        console.log(newurl);
+        console.log(sessionStorage.getItem('sessionId'));
         
         axios({
             method: 'put',

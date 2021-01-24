@@ -40,7 +40,6 @@ function NewsFeed (props) {
             {nf.map((user, index) => (
                 <UserComments key={index} user={user}/>
             ))}
-            {/* {console.log(nf)} */}
         </div>
     )
 }

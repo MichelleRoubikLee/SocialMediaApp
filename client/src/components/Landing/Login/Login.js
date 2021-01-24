@@ -2,7 +2,7 @@ import React, { useState }from 'react';
 import axios from 'axios';
 import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
 import '../Login/Login.css';
-import { useHistory, Redirect } from 'react-router-dom';
+// import { useHistory, Redirect } from 'react-router-dom';
 //import { Router } from 'express';
 
 
@@ -23,10 +23,11 @@ function Login (props) {
             res.data.forEach(user => {
 
                 if(login.email === user.email){
-                    props.setCurrentUser(user._id)                             
+                    props.setCurrentUser(user._id) 
+                    console.log("current user: " + user._id)                            
                 }
             });
-            //console.log(props.currentUser)
+            
         })
     }
 
@@ -51,15 +52,20 @@ function Login (props) {
         .then((response) => {
             console.log(response);
             if (response.status === 200) {
-            sessionStorage.setItem('sessionId', response.data);
-          history.push("/");
+                sessionStorage.setItem('sessionId', response.data);
+            }
+            getCurrentUser();
+            console.log(sessionStorage)
+        });
+    }
+        //   history.push("/");
         // alert you are logged in
         
-        return <Redirect to="/Newsfeed" />;
-            } else{
-            console.log('Login failed.')
-            return <Redirect to='/' />;
-            }
+        // return <Redirect to="/Newsfeed" />;
+        //     } else{
+        //     console.log('Login failed.')
+        //     return <Redirect to='/' />;
+        //     }
 
                 //error message that username and password is bad or whatever else comes back from the server
         // .then((res) => {
@@ -68,9 +74,7 @@ function Login (props) {
         //     getCurrentUser();
         // }, (error) => {
         // console.log(error);
-        })
-    };
-
+        
     return (
             <div className = "loginInfo">
             <div>

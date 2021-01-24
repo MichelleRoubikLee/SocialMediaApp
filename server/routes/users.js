@@ -37,7 +37,7 @@ router.post('/new', async (req,res) => {
         });
         console.log(user);
         await user.save();
-const token = user.generateAuthToken();
+        const token = user.generateAuthToken();
         // const token = user.generateAuthToken();
         return res
             .header('x-auth-token', token)
@@ -54,7 +54,7 @@ const token = user.generateAuthToken();
 router.put('/:userId/comment', auth, async (req, res) => {
     try{
         const{ error } = validateComment(req.body);
-        if(error) return res.status(400).send(error);
+        if(error) return res.status(400).send("ValidationError " + error);
 
         const comment = new Comment ({
             text: req.body.text
