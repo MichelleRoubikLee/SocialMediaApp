@@ -21,11 +21,11 @@ function NewsFeed (props) {
         }).then((res) => {
             setAllUsers(res.data)
         })
-    }, [allUsers]);
+    }, []);
 
     function users(){
         if(!firstRender){
-            allUsers.forEach((oneUser) => {
+            allUsers.map((oneUser) => {
                 if(oneUser.comments.length > 0){
                     nf.push(oneUser);
                 }
@@ -37,9 +37,11 @@ function NewsFeed (props) {
         <div className = "NewsFeed">
             <AddComment currentUser = {props.currentUser}/>
             {users()}
+            {console.log(nf)}
             {nf.map((user, index) => (
                 <UserComments key={index} user={user}/>
             ))}
+
         </div>
     )
 }
