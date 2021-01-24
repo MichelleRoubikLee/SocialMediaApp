@@ -8,24 +8,26 @@ import { useHistory, Redirect } from 'react-router-dom';
 
 
 function Login (props) {
-const history = useHistory();
-    const [login, setLogin] = useState({ email: '', password: '', error: '' })
-    
-    function getCurrentUser(){
-        // const newurl = API_BASE_URL;
-        // axios({
-        //     method: 'get',
-        //     url: newurl,
-        // }).then((res) => {
-        //     res.data.forEach(user => {
 
-        //         if(login.email === user.email){
-        //             props.setCurrentUser(user._id)                             
-        //         }
-        //     });
-        //     //console.log(props.currentUser)
-        // })
-        console.log('getCurrentUser() Called')
+    const [login, setLogin] = useState({
+        email: "",
+        password: ""
+    })
+
+    function getCurrentUser(){
+        const newurl = API_BASE_URL;
+        axios({
+            method: 'get',
+            url: newurl,
+        }).then((res) => {
+            res.data.forEach(user => {
+
+                if(login.email === user.email){
+                    props.setCurrentUser(user._id)                             
+                }
+            });
+            //console.log(props.currentUser)
+        })
     }
 
     const handleChange = (event) => {
@@ -33,7 +35,6 @@ const history = useHistory();
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
     }
     
     async function handleLogin (event) {
@@ -61,8 +62,12 @@ const history = useHistory();
             }
 
                 //error message that username and password is bad or whatever else comes back from the server
-        }, (error) => {
-        console.log(error);
+        // .then((res) => {
+        //     props.setJwt(res.data)
+        //     console.log(res.data);
+        //     getCurrentUser();
+        // }, (error) => {
+        // console.log(error);
         })
     };
 

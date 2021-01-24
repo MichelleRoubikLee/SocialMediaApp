@@ -15,7 +15,7 @@ function AddComment (props) {
         setComment(comment => ({...comment,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
+        //console.log(n, event.target.value)
     }
     
     const handleSubmit = (event) => {
