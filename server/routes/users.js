@@ -69,12 +69,8 @@ router.put('/:userId/comment', auth, async (req, res) => {
         
         if (!comment) return res.status(400).send(`The user with id "${req.params.userid}" does not exist.`);
         
-        console.log("hit1");
-
         await user.save();
         
-        console.log("hit2");
-
         return res.send(user);
 
     } catch(err) {

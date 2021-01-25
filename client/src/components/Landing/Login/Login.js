@@ -9,11 +9,8 @@ import '../Login/Login.css';
 
 function Login (props) {
 
-    const [login, setLogin] = useState({
-        email: "",
-        password: ""
-    })
-
+    const [login, setLogin] = useState({ email: '', password: '', error: '' })
+    
     function getCurrentUser(){
         const newurl = API_BASE_URL;
         axios({
@@ -21,14 +18,13 @@ function Login (props) {
             url: newurl,
         }).then((res) => {
             res.data.forEach(user => {
-
                 if(login.email === user.email){
-                    props.setCurrentUser(user._id) 
-                    console.log("current user: " + user._id)                            
+                    props.setCurrentUser(user._id);                                                
                 }
             });
             
         })
+        console.log('getCurrentUser() Called')
     }
 
     const handleChange = (event) => {
@@ -38,7 +34,7 @@ function Login (props) {
         }))
     }
     
-    async function handleLogin (event) {
+    const handleLogin = (event) => {
         event.preventDefault();
         const newurl = API_LOGIN_URL+'login';
         axios({
@@ -58,21 +54,7 @@ function Login (props) {
             //console.log(sessionStorage)
         });
     }
-        //   history.push("/");
-        // alert you are logged in
-        
-        // return <Redirect to="/Newsfeed" />;
-        //     } else{
-        //     console.log('Login failed.')
-        //     return <Redirect to='/' />;
-        //     }
 
-                //error message that username and password is bad or whatever else comes back from the server
-        // .then((res) => {
-        //     console.log(res.data);
-        //     getCurrentUser();
-        // }, (error) => {
-        // console.log(error);
         
     return (
             <div className = "loginInfo">
