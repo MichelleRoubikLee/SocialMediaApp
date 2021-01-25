@@ -118,16 +118,24 @@ router.put('/:userId/:commentId/dislike', auth, async (req, res) => {
 });
 
 // delete a comment
-// router.delete('/:id', async (req, res) => {
-//     try{
-//         const comments = await comment.findByIdAndRemove(req.params.id);
-//         if (!comment)
-//             return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
-//         return res.send(comment);
-//     } catch(ex){
-//         return res.status(500).send(`Internal Server Error: ${ex}`);
-//     }
-// });
+router.put('/:userId/:commentId/delete', auth, async (req, res) => {
+    try{
+        const user = await User.findByIdAndUpdate(req.params.userId);
+        const comments = user.comments;
+        for(let i = 0; i<user.comments.length; i++){
+            if(comments[i]._id == req.params.commentId){
+                console.log(comments[i])
+                user.comments[i].remove();
+            }
+        }
+        await user.save();
+        return res.send(user);
+
+    } catch(ex) {
+        return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+});
+
 
 
 module.exports = router;
