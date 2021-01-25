@@ -1,5 +1,4 @@
 import React, { useEffect, useState }from 'react';
-import axios from 'axios';
 import CommentBox from "../CommentBox/commentBox";
 
 
@@ -9,7 +8,6 @@ function UserComments (props) {
 
     return (
         <div className = "UserComments">
-            {/* {getCommentInfo()} */}
             {props.user.comments.map((comment, index) => (
                 <CommentBox 
                     key = {index}

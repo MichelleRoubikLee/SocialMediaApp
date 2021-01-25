@@ -69,7 +69,6 @@ function Login (props) {
 
                 //error message that username and password is bad or whatever else comes back from the server
         // .then((res) => {
-        //     props.setJwt(res.data)
         //     console.log(res.data);
         //     getCurrentUser();
         // }, (error) => {

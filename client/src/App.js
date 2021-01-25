@@ -16,11 +16,10 @@ import history from './_services/history';
 
 function App() {
     const [currentUser, setCurrentUser] = useState();
-    const [jwt, setJwt] = useState();
 
     return (
         <div className="App">
-        <Landing setCurrentUser = {setCurrentUser} setJwt = {setJwt}/>
+        <Landing setCurrentUser = {setCurrentUser} />
         {/* <Navbar/> */}
         {/* <Sidebar/> */}
         <Newsfeed currentUser = {currentUser}/>
