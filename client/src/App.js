@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar.js';
 import Newsfeed from './components/Newsfeed/Newsfeed.js';
 import Profile from './components/Profile/Profile.js';
 import Sidebar from './components/Sidebar/Sidebar.js';
-import {Router} from 'react-router-dom';
+// import {Router} from 'react-router-dom';
 import Routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';

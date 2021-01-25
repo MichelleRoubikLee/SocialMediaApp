@@ -2,7 +2,9 @@ import React, { useState }from 'react';
 import axios from 'axios';
 import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
 import '../Login/Login.css';
-import { Redirect } from 'react-router-dom';
+// import { useHistory, Redirect } from 'react-router-dom';
+//import { Router } from 'express';
+
 
 
 function Login (props) {
@@ -18,10 +20,11 @@ function Login (props) {
             res.data.forEach(user => {
 
                 if(login.email === user.email){
-                    props.setCurrentUser(user._id)                             
+                    props.setCurrentUser(user._id) 
+                    console.log("current user: " + user._id)                            
                 }
             });
-            //console.log(props.currentUser)
+            
         })
         console.log('getCurrentUser() Called')
     }
@@ -46,24 +49,31 @@ function Login (props) {
             }
         })
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             if (response.status === 200) {
-            sessionStorage.setItem('sessionId', response.data);
-          //put in redirect here
-          <Redirect to="/Newsfeed" />;  //need to ask for help on the redirect function
-        
-        return 
-            } else{
-            console.log('Login failed.')
-            return <Redirect to='/' />;
+                sessionStorage.setItem('sessionId', response.data);
             }
+            getCurrentUser();
+            //console.log(sessionStorage)
+        });
+    }
+        //   history.push("/");
+        // alert you are logged in
+        
+        // return <Redirect to="/Newsfeed" />;
+        //     } else{
+        //     console.log('Login failed.')
+        //     return <Redirect to='/' />;
+        //     }
 
                 //error message that username and password is bad or whatever else comes back from the server
-        }, (error) => {
-        console.log(error);
-        })
-    };
-
+        // .then((res) => {
+        //     props.setJwt(res.data)
+        //     console.log(res.data);
+        //     getCurrentUser();
+        // }, (error) => {
+        // console.log(error);
+        
     return (
             <div className = "loginInfo">
             <div>

@@ -7,7 +7,7 @@ import {API_BASE_URL} from '../../../config/config.js';
 function AddComment (props) {
     const [comment, setComment] = useState({
         // userId: props.currentUser.id,
-        text: ""
+        commentInput: ""
     });
     
     const handleChange = (event) => {
@@ -20,15 +20,22 @@ function AddComment (props) {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newurl = API_BASE_URL + comment.userId + "/comment" ;
+        const newurl = API_BASE_URL + props.currentUser + "/comment" ;
+        //console.log(newurl);
+        
+        let headers = sessionStorage.getItem('sessionId'); //this is what validates access based on session ID
+        //console.log(sessionStorage.getItem('sessionId'));
+        console.log(comment.commentInput)
+
         
         axios({
             method: 'put',
-            headers: {'x-auth-token': sessionStorage.getItem('sessionId')}, //this is what validates access based on session ID
             url: newurl,
+            headers: {'x-auth-token': headers},
             data: {
-                text: comment.text
-            }
+                text: comment.commentInput
+            },
+            
         })
     }
     
