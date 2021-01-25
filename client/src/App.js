@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from './config/config';
 import Landing from './components/Landing/Landing.js';
@@ -12,21 +12,23 @@ import Routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import history from './_services/history';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NewsFeed from './components/Newsfeed/Newsfeed';
+import ProfilePicture from './components/Profile/profilepicture';
 
 
 function App() {
-    const [currentUser, setCurrentUser] = useState();
-    const [jwt, setJwt] = useState();
+    // const [currentUser, setCurrentUser] = useState();
+    // const [jwt, setJwt] = useState();
 
     return (
-        <div className="App">
-        <Landing setCurrentUser = {setCurrentUser} setJwt = {setJwt}/>
-        {/* <Navbar/> */}
-        {/* <Sidebar/> */}
-        <Newsfeed currentUser = {currentUser}/>
-        {/* <Profile/> */}
-        {/* <MyComments/> */}
-        </div>
+        <main>
+            <Switch>               
+            <Route path="/" component={Landing} exact />
+            <Route path="/newsfeed" component={NewsFeed} />
+            <Route path="/profile" component={Profile} />
+        </Switch>
+        </main>
     );
 }
 

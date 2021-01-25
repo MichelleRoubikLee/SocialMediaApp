@@ -21,7 +21,7 @@ function NewsFeed (props) {
         }).then((res) => {
             setAllUsers(res.data)
         })
-    }, [allUsers]);
+    }, [allUsers], 6);
 
     function users(){
         if(!firstRender){

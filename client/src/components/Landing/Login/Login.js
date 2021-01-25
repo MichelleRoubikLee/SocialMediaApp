@@ -2,18 +2,13 @@ import React, { useState }from 'react';
 import axios from 'axios';
 import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
 import '../Login/Login.css';
-import { useHistory, Redirect } from 'react-router-dom';
-//import { Router } from 'express';
-
+import { Redirect } from 'react-router-dom';
 
 
 function Login (props) {
 
-    const [login, setLogin] = useState({
-        email: "",
-        password: ""
-    })
-
+    const [login, setLogin] = useState({ email: '', password: '', error: '' })
+    
     function getCurrentUser(){
         const newurl = API_BASE_URL;
         axios({
@@ -28,6 +23,7 @@ function Login (props) {
             });
             //console.log(props.currentUser)
         })
+        console.log('getCurrentUser() Called')
     }
 
     const handleChange = (event) => {
@@ -35,9 +31,10 @@ function Login (props) {
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
+        console.log(n, event.target.value)
     }
     
-    async function handleLogin (event) {
+    const handleLogin = (event) => {
         event.preventDefault();
         const newurl = API_LOGIN_URL+'login';
         axios({
@@ -52,22 +49,18 @@ function Login (props) {
             console.log(response);
             if (response.status === 200) {
             sessionStorage.setItem('sessionId', response.data);
-          history.push("/");
-        // alert you are logged in
+          //put in redirect here
+          <Redirect to="/Newsfeed" />;  //need to ask for help on the redirect function
         
-        return <Redirect to="/Newsfeed" />;
+        return 
             } else{
             console.log('Login failed.')
             return <Redirect to='/' />;
             }
 
                 //error message that username and password is bad or whatever else comes back from the server
-        // .then((res) => {
-        //     props.setJwt(res.data)
-        //     console.log(res.data);
-        //     getCurrentUser();
-        // }, (error) => {
-        // console.log(error);
+        }, (error) => {
+        console.log(error);
         })
     };
 

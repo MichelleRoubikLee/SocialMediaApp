@@ -46,7 +46,6 @@ function Register(props) {
         }).then(() => {
             getCurrentUser();
         })
-<<<<<<< HEAD
         console.log(register);
         // .then((response) => {
         //     redirectToHome();
@@ -58,35 +57,6 @@ function Register(props) {
     //     function redirectToHome() {
     // props.updateTitle('Home');
     // props.history.push('/home');
-=======
-        //console.log(register);
-        
-    }
-        // axios.post(API_BASE_URL+'/signup', payload)
-        //         .then(function (response) {
-        //             if(response.status === 200){
-        //                 setRegister(prevState => ({
-        //                     ...prevState,
-        //                     'successMessage' : 'Registration successful. Redirecting to home page..'
-        //                 }))
-        //                 // redirectToHome();
-        //                 props.showError(null)
-        //             } else{
-        //                 props.showError("Some error ocurred");
-        //             }
-        //         })
-        //         .catch(function (error) {
-        //             console.log(error);
-        //         });    
-            // } else {
-            //     props.showError('Please enter valid username and password');    
-            // })   
-        
-        //this is the output that will direct users to a specific page based off the outcome. will need to change the props.property to reflect out actual structure
-//         function redirectToHome() {
-//     props.updateTitle('Home');
-//     props.history.push('/home');
->>>>>>> acf590c26d604dd135e12f46013c2d27aae388f8
 // }
         // const redirectToLogin = () => {
         //     props.updateTitle('Login')
