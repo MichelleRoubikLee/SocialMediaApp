@@ -36,7 +36,9 @@ function AddComment (props) {
                 text: comment.commentInput
             },
             
-        })
+        }).then(() => {
+            props.getUsers();
+        });
     }
     
 

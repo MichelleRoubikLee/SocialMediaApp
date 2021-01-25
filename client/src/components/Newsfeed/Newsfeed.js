@@ -13,7 +13,7 @@ function NewsFeed (props) {
     const firstRender = useFirstRender();
     const nf = []; 
 
-    useEffect(() => {
+    const getUsers = () => {
         const newurl = API_BASE_URL;
         axios({
             method: 'get',
@@ -21,6 +21,10 @@ function NewsFeed (props) {
         }).then((res) => {
             setAllUsers(res.data)
         })
+    }
+
+    useEffect(() => {
+        getUsers()
     }, []);
 
     function users(){
@@ -35,11 +39,11 @@ function NewsFeed (props) {
 
     return (
         <div className = "NewsFeed">
-            <AddComment currentUser = {props.currentUser}/>
+            <AddComment currentUser = {props.currentUser} getUsers = {getUsers} />
             {users()}
             {console.log(nf)}
             {nf.map((user, index) => (
-                <UserComments key={index} user={user}/>
+                <UserComments key={index} user={user} getUsers = {getUsers}/>
             ))}
 
         </div>

@@ -18,6 +18,7 @@ function UserComments (props) {
                     text = {comment.text}
                     likes = {comment.likes}
                     dislikes = {comment.dislikes}
+                    getUsers = {props.getUsers}
                  />
             ))}
         </div>

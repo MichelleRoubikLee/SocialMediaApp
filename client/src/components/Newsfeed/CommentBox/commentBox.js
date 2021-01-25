@@ -14,7 +14,9 @@ function CommentBox (props) {
           method: 'put',
           headers: {'x-auth-token': headers},
           url: newUrl
-        })
+        }).then(() => {
+            props.getUsers();
+        });
     }
 
     const handleDislike = (event) => {
@@ -25,7 +27,9 @@ function CommentBox (props) {
           method: 'put',
           headers: {'x-auth-token': headers},
           url: newUrl
-        })
+        }).then(() => {
+            props.getUsers();
+        });
     }
         
 
