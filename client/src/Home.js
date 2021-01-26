@@ -5,8 +5,8 @@ import Newsfeed from './components/Newsfeed/Newsfeed';
 
 export const Home = (props) => (
   
-  <div class="home">
-  <div class="home-title">
+  <div className="home">
+  <div className="home-title">
     <p>This is a paragraph and I am writing on the home page</p>
     </div>
      

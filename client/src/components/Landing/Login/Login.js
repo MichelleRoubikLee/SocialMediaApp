@@ -32,7 +32,7 @@ function Login (props) {
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
+        // console.log(n, event.target.value)
     }
     
     const handleLogin = (event) => {

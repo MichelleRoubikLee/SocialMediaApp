@@ -4,7 +4,7 @@ import Landing from './Landing';
 
 
 export const LandingPage = (props) => (
-<div class="landing">
+<div className="landing">
    <Landing />
   </div>
   
