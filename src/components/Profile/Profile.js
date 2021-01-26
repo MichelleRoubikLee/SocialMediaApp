@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
-import {API_BASE_PETINFO_URL} from '../../config/config.js';
-import MyComments from '../MyComments/MyComments.js';
+import {API_BASE_PETINFO_URL} from '../config/config';
 import Counter from './like';
-import ProfilePicture from './ProfilePicture';
+import ProfilePicture from './profilepicture';
 
 function Profile(props) {
 
@@ -78,7 +77,6 @@ function Profile(props) {
             </form>
             {/* <button type="submit" onClick="()">Click me</button> */}
             </div>
-            <MyComments/>
         </div>
 
     )

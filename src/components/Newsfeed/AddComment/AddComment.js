@@ -1,6 +1,6 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../../config/config.js';
+import {API_BASE_URL} from '../../config/config';
 import jwt_decode from "jwt-decode";
 
 
@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 function AddComment (props) {
     var token = sessionStorage.getItem('sessionId');
     var decoded = jwt_decode(token);
-    //console.log(decoded._id);
+    console.log(decoded._id);
 
 
     const [comment, setComment] = useState({

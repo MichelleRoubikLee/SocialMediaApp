@@ -1,9 +1,9 @@
 import React, { useState }from 'react';
 import Login from "./Login/Login";
 import Register from "./Register/Register";
-import logo from "../../img/logo.png";
+import logo from "./img/logo.jpg";
 import '../Landing/landing.css';
-import NewsFeed from '../Newsfeed/Newsfeed';
+
 
 function Landing () {
     const [currentUser, setCurrentUser] = useState();

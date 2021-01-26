@@ -1,6 +1,6 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../config/config.js';
+import {API_BASE_URL} from '../config/config';
 import UserComments from "./UserComments/UserComments";
 import AddComment from "./AddComment/AddComment";
 import useFirstRender from "../../firstRenderHook/useFirstRender";
@@ -41,7 +41,7 @@ function NewsFeed (props) {
 
     return (
         <div className = "NewsFeed">
-            <AddComment getUsers = {getUsers} />
+            <AddComment currentUser = {props.currentUser} getUsers = {getUsers} />
             {users()}
             {nf.map((user, index) => (
                 <UserComments key={index} user={user} getUsers = {getUsers}/>

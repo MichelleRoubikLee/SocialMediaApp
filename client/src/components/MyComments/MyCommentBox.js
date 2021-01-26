@@ -1,10 +1,10 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../../config/config.js';
-import './commentBox.css';
+import {API_BASE_URL} from '../../config/config';
+import './MyCommentBox.css';
 import jwt_decode from "jwt-decode";
 
-function CommentBox (props) {
+function MyCommentBox (props) {
 
     var token = sessionStorage.getItem('sessionId');
     var decoded = jwt_decode(token);
@@ -13,7 +13,7 @@ function CommentBox (props) {
 
     const handleLike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/like';
+        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/like';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
@@ -26,7 +26,20 @@ function CommentBox (props) {
 
     const handleDislike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/dislike';
+        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/dislike';
+        let headers = sessionStorage.getItem('sessionId');
+        axios({
+          method: 'put',
+          headers: {'x-auth-token': headers},
+          url: newUrl
+        }).then(() => {
+            props.getUsers();
+        });
+    }
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/delete';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
@@ -39,15 +52,16 @@ function CommentBox (props) {
         
 
     return (
-        <div className = "CommentBox">
+        <div className = "MyCommentBox">
             <p>Name:{props.name}</p>
             {/* add photo here */}
             <p>text:{props.text}</p>
             <button onClick={handleLike}>likes:{props.likes}</button>
             <button onClick={handleDislike}>dislikes:{props.dislikes}</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     )
 }
 
 
-export default CommentBox;
+export default MyCommentBox;

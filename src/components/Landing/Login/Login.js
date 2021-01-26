@@ -1,7 +1,6 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_LOGIN_URL, API_BASE_URL} from '../../../config/config.js';
-import '../Login/Login.css';
+import './Login.css';
 // import { useHistory, Redirect } from 'react-router-dom';
 //import { Router } from 'express';
 
@@ -12,7 +11,7 @@ function Login (props) {
     const [login, setLogin] = useState({ email: '', password: '', error: '' })
     
     function getCurrentUser(){
-        const newurl = API_BASE_URL;
+        const newurl = "http://localhost:5000/api/users/";
         axios({
             method: 'get',
             url: newurl,
@@ -36,7 +35,7 @@ function Login (props) {
     
     const handleLogin = (event) => {
         event.preventDefault();
-        const newurl = API_LOGIN_URL+'login';
+        const newurl = "http://localhost:5000/api/users/" + 'login';
         axios({
             method: 'post',
             url: newurl,
