@@ -2,19 +2,7 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import axios from 'axios'
 
-
-  //   axios({
-  //     method: 'post',
-  //     url: newurl,
-  //     data: {
-  //         aboutPetText: petBoxInfo.aboutPetText,
-  //         name: petBoxInfo.name
-  //     }
-
-  // })  
-
-
-function ProfilePicture() {
+function profilePicture() {
     const UploadedImage = useRef(null);
     const ImageUploader = useRef(null);
 
@@ -57,9 +45,7 @@ function ProfilePicture() {
         <img
           ref={UploadedImage}
           style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute"
+            display: "block"
           }}
         />
       </div>
@@ -69,4 +55,4 @@ function ProfilePicture() {
 }
 
 
-export default ProfilePicture;
+export default profilePicture;

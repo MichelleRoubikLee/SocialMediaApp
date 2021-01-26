@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useRef } from 'react';
 import {API_BASE_PETINFO_URL} from '../../config/config.js';
 import Counter from './like';
-import ProfilePicture from './profilepicture';
+import ProfilePicture from './ProfilePicture';
 
 function Profile(props) {
 

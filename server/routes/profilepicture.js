@@ -1,27 +1,35 @@
-const { pictureSchema, validatePicture } = require("../models/profilepicture");
-const express = require("express");
+const express = require ('express');
 const router = express.Router();
+const multer = require('multer');
 
-router.post('/', async (req,res) => {
-    try {
-        const {er} = validatePicture(req.body);
-        if(er)
-            return res.status(400).send(er);
+//define storage for the images
 
-        info = new picture({
-            // userId: req.body.userId,
-            aboutPetText: req.body.aboutPetText,
-            name: req.body.name
-        });
+const storage = multer.diskStorage({
+    //destination for files
+    destination: function (request, file, callback) {
+        callback(null, './uploads/images')
+    },
 
-        await info.save();
+//add back the extension
+filename: function (request,file,callback) {
+    callback(null, Date.now() * file.originalname)
+}
+});
 
-        return res.send(info);
-    } catch (ex) {
-        return res.status(500).send(`InternalServerError:${ex}`);
-    }
+// upload parameters for multer
 
-})
+const upload = multer({
+    storage: storage
+    
+});
 
+//route that handles a new post [uploading a picture in this case]
+//find logged in user, put to update image property with image coming from multer upload
+router.post('/image', upload.single('image'), async (request, response) =>{
+    console.log(request.file.filename);
+    let img = new img({
+    img: request.file.filename,
+    })
+});
 
 module.exports = router;
