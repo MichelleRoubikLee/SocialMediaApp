@@ -14,7 +14,7 @@ function Landing () {
             <img className="logo" src={logo} alt="logo" width="100" height="100"></img>
             <Login currentUser = {currentUser} setCurrentUser = {setCurrentUser}/>
             <Register currentUser = {currentUser} setCurrentUser = {setCurrentUser}/>
-            <NewsFeed currentUser = {currentUser} setCurrentUser = {setCurrentUser}/>
+            {/* <NewsFeed currentUser = {currentUser} setCurrentUser = {setCurrentUser}/> */}
         </div>
     )
 }

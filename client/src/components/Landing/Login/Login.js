@@ -51,7 +51,7 @@ function Login (props) {
                 sessionStorage.setItem('sessionId', response.data);
             }
             getCurrentUser();
-            //console.log(sessionStorage)
+            console.log(response)
         });
     }
 

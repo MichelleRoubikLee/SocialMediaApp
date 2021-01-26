@@ -2,13 +2,18 @@ import React, { useState }from 'react';
 import axios from 'axios';
 import {API_BASE_URL} from '../../../config/config.js';
 import './commentBox.css';
+import jwt_decode from "jwt-decode";
 
 function CommentBox (props) {
+
+    var token = sessionStorage.getItem('sessionId');
+    var decoded = jwt_decode(token);
+    console.log(decoded._id);
 
 
     const handleLike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/like';
+        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/like';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
@@ -21,7 +26,7 @@ function CommentBox (props) {
 
     const handleDislike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/dislike';
+        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/dislike';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
