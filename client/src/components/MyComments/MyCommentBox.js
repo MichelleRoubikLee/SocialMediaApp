@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../config/config';
+import {API_BASE_URL} from '../config/config';
 import './MyCommentBox.css';
 import jwt_decode from "jwt-decode";
 

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
-import {API_BASE_PETINFO_URL} from '../../config/config.js';
 import MyComments from '../MyComments/MyComments.js';
 import Counter from './like';
 import ProfilePicture from './profilepicture';
@@ -8,8 +7,8 @@ import ProfilePicture from './profilepicture';
 function Profile(props) {
 
     const [petBoxInfo, setPetBoxInfo] = useState({
-        aboutPetText: "",
-        name: ""
+        aboutPetText: "Pet",
+        name: "Charlie"
     });
 
     const handleChange = (event) => {
@@ -23,7 +22,7 @@ function Profile(props) {
 
     const handleInfo = (event) => {
         event.preventDefault();
-        const newurl = API_BASE_PETINFO_URL;
+        const newurl = 'http://localhost:5000/api/petinfo/';
 
         axios({
             method: 'post',

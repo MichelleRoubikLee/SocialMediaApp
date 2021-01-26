@@ -1,33 +1,32 @@
-import React, {useState, Component} from 'react';
-import axios from 'axios';
-import {API_BASE_URL} from './config/config';
-import Landing from './components/Landing/Landing.js';
-import MyComments from './components/MyComments/MyComments.js';
-import Navbar from './components/Navbar/Navbar.js';
-import Newsfeed from './components/Newsfeed/Newsfeed.js';
-import Profile from './components/Profile/Profile.js';
-import Sidebar from './components/Sidebar/Sidebar.js';
-// import {Router} from 'react-router-dom';
-import Routes from './routes';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import history from './_services/history';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import NewsFeed from './components/Newsfeed/Newsfeed';
-
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { NavigationBar } from './components/Navbar/NavigationBar';
+import {Home} from './Home';
+import {Profile} from './Profile';
+import {LandingPage} from './components/Landing/LandingPage';
+import Newsfeed from './components/Newsfeed/Newsfeed';
+import { NoMatch } from './NoMatch';
+import Sidebar from './components/Sidebar/Sidebar';
+import nUser from './components/Profile/nUser'
 
 function App() {
-
-    return (
-        <main>
-            <Switch>               
-                <Route path="/" component={Landing} exact />
-                <Route path="/newsfeed" component={NewsFeed}/>
-                <Route path="/profile" component={Profile} />
-            </Switch>
-        </main>
-    );
+  return (
+    <React.Fragment>
+      <Router>
+        <NavigationBar />
+        <Sidebar />
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route path = "/home" component={Home} />
+        <Route path="/nUser" component={nUser} />
+        <Route component={NoMatch} />
+      </Switch>
+      </Router>
+    </React.Fragment>
+  );
 }
-
 
 export default App;

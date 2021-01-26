@@ -1,9 +1,9 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
-import {API_BASE_URL} from '../../config/config.js';
 import UserComments from "./UserComments/UserComments";
 import AddComment from "./AddComment/AddComment";
 import useFirstRender from "../../firstRenderHook/useFirstRender";
+import './Newsfeed.css';
 
 
 
@@ -16,7 +16,7 @@ function NewsFeed (props) {
     const nf = []; 
 
     const getUsers = () => {
-        const newurl = API_BASE_URL;
+        const newurl = 'http://localhost:5000/api/users/';
         axios({
             method: 'get',
             url: newurl,

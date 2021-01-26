@@ -17,7 +17,7 @@ function Login (event) { //from tutorial: https://github.com/vnovick/graphql-jwt
         setLogin(login => ({...login,
             [n]: event.target.value,
         }))
-        console.log(n, event.target.value)
+        console.log(n, event.target.value);
     }
 
     const handleLogin = (event) => {

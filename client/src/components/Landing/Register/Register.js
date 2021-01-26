@@ -1,5 +1,4 @@
 import React, { useState }from 'react';
-import {API_BASE_URL} from '../../../config/config.js';
 import axios from 'axios';
 import '../Register/Register.css';
 
@@ -12,7 +11,7 @@ function Register(props) {
     });
     
     function getCurrentUser(){
-        const newurl = API_BASE_URL;
+        const newurl = 'http://localhost:5000/api/users/';
         axios({
             method: 'get',
             url: newurl,
@@ -33,7 +32,7 @@ function Register(props) {
     
     const handleRegister = (event) => {
         event.preventDefault();
-        const newurl = API_BASE_URL+'new';
+        const newurl = 'http://localhost:5000/api/users/new';
         
         axios({
             method: 'post',
