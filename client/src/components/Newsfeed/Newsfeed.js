@@ -41,7 +41,7 @@ function NewsFeed (props) {
 
     return (
         <div className = "NewsFeed">
-            <AddComment currentUser = {props.currentUser} getUsers = {getUsers} />
+            <AddComment getUsers = {getUsers} />
             {users()}
             {nf.map((user, index) => (
                 <UserComments key={index} user={user} getUsers = {getUsers}/>

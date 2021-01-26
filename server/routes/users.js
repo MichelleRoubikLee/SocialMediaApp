@@ -16,6 +16,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+//get single user
+router.get("/:userId", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId);
+        return res.send(user);
+    } catch (ex) {
+        return res.status(500).send(`Internal server Error: ${ex}`);
+    }
+});
+
 //get all friend users
 
 

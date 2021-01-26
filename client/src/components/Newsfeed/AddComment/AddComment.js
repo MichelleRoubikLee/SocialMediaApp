@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 function AddComment (props) {
     var token = sessionStorage.getItem('sessionId');
     var decoded = jwt_decode(token);
-    console.log(decoded._id);
+    //console.log(decoded._id);
 
 
     const [comment, setComment] = useState({
