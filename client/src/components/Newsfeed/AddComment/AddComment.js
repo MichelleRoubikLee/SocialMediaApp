@@ -13,7 +13,6 @@ function AddComment (props) {
 
 
     const [comment, setComment] = useState({
-        // userId: props.currentUser.id,
         commentInput: ""
     });
     
@@ -22,13 +21,11 @@ function AddComment (props) {
         setComment(comment => ({...comment,
             [n]: event.target.value,
         }))
-        //console.log(n, event.target.value)
     }
     
     const handleSubmit = (event) => {
         event.preventDefault();
         const newurl = API_BASE_URL + decoded._id + "/comment" ;
-        //console.log(newurl);
         
         let headers = sessionStorage.getItem('sessionId'); //this is what validates access based on session ID
         console.log(comment.commentInput)

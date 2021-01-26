@@ -18,18 +18,6 @@ import ProfilePicture from './components/Profile/profilepicture';
 
 
 function App() {
-    // const [currentUser, setCurrentUser] = useState();
-
-    // return (
-    //     <div className="App">
-    //     <Landing setCurrentUser = {setCurrentUser} />
-    //     {/* <Navbar/> */}
-    //     {/* <Sidebar/> */}
-    //     <Newsfeed currentUser = {currentUser}/>
-    //     {/* <Profile/> */}
-    //     {/* <MyComments/> */}
-    //     </div>
-
 
     return (
         <main>

@@ -62,7 +62,7 @@ function Profile(props) {
             name = "pictureProfile"
             type = "picture">
             </div>
-            <ProfilePicture/>
+            {/* <ProfilePicture/> */}
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
                 <label htmlFor="info-box">Info Box
