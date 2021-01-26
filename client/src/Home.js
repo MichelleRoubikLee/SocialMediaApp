@@ -5,9 +5,10 @@ import Newsfeed from './components/Newsfeed/Newsfeed';
 
 export const Home = (props) => (
   
-  <div className="home">
-  <div className="home-title">
-    <p>This is a paragraph and I am writing on the home page</p>
+  <div class="home">
+  <div class="home-title">
+    <h1>Welcome to PETSTAGRAM! </h1>
+    <h2>Your home of all the things!</h2>
     </div>
      
   <Newsfeed />

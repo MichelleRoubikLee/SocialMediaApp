@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ImageUploading from "react-images-uploading";
 
-import "./styles.css";
+// import "./styles.css";
 
 function App() {
   const [images, setImages] = React.useState([]);

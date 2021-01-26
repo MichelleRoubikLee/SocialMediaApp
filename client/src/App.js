@@ -5,12 +5,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavigationBar } from './components/Navbar/NavigationBar';
 import {Home} from './Home';
-import {Profile} from './Profile';
 import {LandingPage} from './components/Landing/LandingPage';
-import Newsfeed from './components/Newsfeed/Newsfeed';
+import MyComments from './components/MyComments/MyComments';
 import { NoMatch } from './NoMatch';
 import Sidebar from './components/Sidebar/Sidebar';
-import nUser from './components/Profile/nUser'
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path = "/home" component={Home} />
-        <Route path="/nUser" component={nUser} />
+        <Route path="/profile" component={Profile} />
         <Route component={NoMatch} />
       </Switch>
       </Router>

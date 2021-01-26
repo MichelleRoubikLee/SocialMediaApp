@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
 import MyComments from '../MyComments/MyComments.js';
-import Counter from './like';
-import ProfilePicture from './profilepicture';
+import './Profile.css';
+
+
+// import ProfilePicture from './profilepicture';
 
 function Profile(props) {
 
@@ -35,20 +37,6 @@ function Profile(props) {
         })  
     }
 
-    // const handleLike = (event) => {
-    //     event.preventDefault();
-        
-    
-    // axios({
-    //     method: 'get',
-    //     url: newurl,
-    //     data: {
-    //         like: newPost.like
-    //     }
-
-    // })  
-    // }
-
     // useEffect(function() {
     //     console.log();
     // },[petBoxInfo]);
@@ -61,7 +49,7 @@ function Profile(props) {
             name = "pictureProfile"
             type = "picture">
             </div>
-            <ProfilePicture/>
+            {/* <ProfilePicture/> */}
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
                 <label htmlFor="info-box">Info Box
