@@ -13,7 +13,7 @@ function CommentBox (props) {
 
     const handleLike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/like';
+        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/like';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
@@ -26,7 +26,7 @@ function CommentBox (props) {
 
     const handleDislike = (event) => {
         event.preventDefault();
-        const newUrl = API_BASE_URL + decoded._id + "/" + props.commentId + '/dislike';
+        const newUrl = API_BASE_URL + props.userId + "/" + props.commentId + '/dislike';
         let headers = sessionStorage.getItem('sessionId');
         axios({
           method: 'put',
