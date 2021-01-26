@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<form action ="/profilepicture" method = "GET" enctype = "multipart/form-data">
+    <div class = "form-group">
+        <label for= "title" class= "text-white">Title</label>
+        <input type = "text" class ="form-control" placeholder= "Title" name= "title" required>
+    </div>
+
+    <div class = "form-group">
+        <label for= "image" class = "text-white">Upload Image</label>
+        <input type="file" name="image" id="image" class = "form-control-file text-white">
+    </div>
+    
+    <div>
+<img src = "./images/placeholder.png" class ="card-img" alt="...">
+</div>
+</body>

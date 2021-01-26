@@ -4,9 +4,10 @@ const app = express();
 const mongoose = require('mongoose')
 const users = require('./routes/users');
 const cors = require('cors');
-// var multer = require('multer');
+const multer = require('multer');
 const auth = require('./routes/auth');
 const petinfo = require('./routes/petinfos');
+const profilepicture = require('./routes/profilepicture');
 
 connectDB();
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use('/api/users', users);
 app.use('/api/auth', auth); //not sure if this is formed right
 app.use('/api/newinfo', petinfo);
-
+app.use('/api/profilepicture', profilepicture);
 
 var port = process.env.PORT || '5000'
 app.listen(port, err => {

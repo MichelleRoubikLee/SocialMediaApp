@@ -14,7 +14,7 @@ import './App.css';
 import history from './_services/history';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NewsFeed from './components/Newsfeed/Newsfeed';
-import ProfilePicture from './components/Profile/profilepicture';
+import ProfilePicture from './components/Profile/ProfilePicture.js';
 
 
 function App() {
