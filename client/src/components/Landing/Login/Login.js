@@ -1,15 +1,16 @@
 import React, { useState }from 'react';
 import axios from 'axios';
 import '../Login/Login.css';
-// import { useHistory, Redirect } from 'react-router-dom';
-//import { Router } from 'express';
+import { useHistory, Redirect } from 'react-router-dom';
+
 
 
 
 function Login (props) {
 
     const [login, setLogin] = useState({ email: '', password: '', error: '' })
-    
+    let history = useHistory();
+
     function getCurrentUser(){
         const newurl = 'http://localhost:5000/api/users/';
         axios({
@@ -50,6 +51,7 @@ function Login (props) {
             //console.log(response);
             if (response.status === 200) {
                 sessionStorage.setItem('sessionId', response.data);
+                history.push("/Home");
             }
             getCurrentUser();
             console.log(response)

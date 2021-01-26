@@ -20,7 +20,7 @@ function App() {
         value={images}
         onChange={onChange}
         maxNumber={maxNumber}
-        dataURLKey="data_url"
+        dataURLKey="dataURL"
       >
         {({
           imageList,
