@@ -26,7 +26,7 @@ class SideNav extends React.Component {
                   key: 1 /* Key is required, else console throws error. Does this please you Mr. Browser?! */
                 },
                 {
-                  path: '/newsfeed',
+                  path: '/profile',
                   name: 'News',
                   css: 'fas fa-cat',
                   key: 2

@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavigationBar } from './components/Navbar/NavigationBar';
 import {Home} from './Home';
 import {LandingPage} from './components/Landing/LandingPage';
-import MyComments from './components/MyComments/MyComments';
 import { NoMatch } from './NoMatch';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
@@ -21,6 +20,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path = "/home" component={Home} />
         <Route path="/profile" component={Profile} />
+        <Route path="/Logout" component={LandingPage} />
         <Route component={NoMatch} />
       </Switch>
       </Router>

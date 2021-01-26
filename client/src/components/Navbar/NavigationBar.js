@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
-// import Logout from './logout';
+import Logout from './logout';
 
 
 const Styles = styled.div`
@@ -35,7 +35,7 @@ export const NavigationBar = () => (
         <Nav className="ml-auto">
           <Nav.Item><Nav.Link href="/home">Home</Nav.Link></Nav.Item> 
           <Nav.Item><Nav.Link href="/profile">Profile</Nav.Link></Nav.Item>
-          <Nav.Item><Nav.Link href="/">Profile</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link href="Logout">Logout</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
