@@ -1,5 +1,7 @@
 .CommentBox {
     margin: 1em;
+    margin-left: 10em;
     padding: 1em ;
     border-style: solid;
+    width: 85%;
 }
