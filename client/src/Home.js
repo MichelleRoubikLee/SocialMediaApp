@@ -7,7 +7,8 @@ export const Home = (props) => (
   
   <div class="home">
   <div class="home-title">
-    <p>This is a paragraph and I am writing on the home page</p>
+    <h1>Welcome to PETSTAGRAM! </h1>
+    <h2>Your home of all the things!</h2>
     </div>
      
   <Newsfeed />
