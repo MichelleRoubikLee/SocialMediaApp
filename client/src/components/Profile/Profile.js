@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import {API_BASE_PETINFO_URL} from '../../config/config.js';
 import MyComments from '../MyComments/MyComments.js';
 import Counter from './like';
-import ProfilePicture from './ProfilePicture';
+import ProfilePicture from './profilepicture';
 
 function Profile(props) {
 
@@ -62,7 +62,7 @@ function Profile(props) {
             name = "pictureProfile"
             type = "picture">
             </div>
-            {/* <ProfilePicture/> */}
+            <ProfilePicture/>
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
                 <label htmlFor="info-box">Info Box
