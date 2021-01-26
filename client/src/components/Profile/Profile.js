@@ -44,11 +44,12 @@ function Profile(props) {
     return (
         <div className='Profile'>
             <div 
-            className = "profile picture" 
+            className = "profile-picture" 
             id = "profile"
             name = "pictureProfile"
             type = "picture">
             </div>
+            <img src="./Petstagram.jpg"></img>
             {/* <ProfilePicture/> */}
             <div className = "about my pet">
             <form onSubmit={handleInfo}>
